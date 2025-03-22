@@ -1,75 +1,34 @@
-# Nuxt Minimal Starter
+# This is a starter pack for a nuxt js project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+In this starter pack, you'll find the vuetify dependency, a test dependency, a linter and internationalization (i18n).
 
-## Setup
+If you're curious, you'll also find the “npm” commands.
 
-Make sure to install dependencies:
+## This command npm
 
-```bash
-# npm
-npm install
+### for vuetify :
 
-# pnpm
-pnpm install
+npm i -D vuetify vite-plugin-vuetify
+npm i @mdi/font
 
-# yarn
-yarn install
+### for test units :
 
-# bun
-bun install
-```
+npx nuxi@latest module add test-utils
 
-## Development Server
+the command to run the tests is : `npx vitest` in your terminal
 
-Start the development server on `http://localhost:3000`:
+### for ESLint :
 
-```bash
-# npm
-npm run dev
+npx nuxi@latest module add eslint
 
-# pnpm
-pnpm dev
+the command to run the linter is : `npm run lint .` in your terminal
 
-# yarn
-yarn dev
+### for Prettier :
 
-# bun
-bun run dev
-```
+npm install --save-dev prettier
 
-## Production
+the command to run the linter is : `npx prettier --write .` ou `npm run format` in your terminal
 
-Build the application for production:
+### for I18N :
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+coming soon ......

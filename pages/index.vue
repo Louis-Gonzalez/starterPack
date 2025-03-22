@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  let title = 'This is home page of your project'
+let title = 'This is home page of your project';
 </script>
 
 <template>
@@ -8,12 +8,13 @@
     <h2>This is the home page</h2>
     <div>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, quaerat. Exercitationem dolorem quo aliquam ratione quia. Harum doloribus atque assumenda. Quos aspernatur laudantium quibusdam. Placeat expedita excepturi quis id quidem?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, quaerat.
+        Exercitationem dolorem quo aliquam ratione quia. Harum doloribus atque
+        assumenda. Quos aspernatur laudantium quibusdam. Placeat expedita
+        excepturi quis id quidem?
       </p>
       <p>
-        <v-btn color="secondary" outlined>
-          Button
-        </v-btn>
+        <v-btn color="secondary" outlined> Button </v-btn>
       </p>
     </div>
   </div>
@@ -22,6 +23,4 @@
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
