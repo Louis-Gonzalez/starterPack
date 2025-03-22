@@ -18,9 +18,7 @@ let title = 'This is home page of your project';
       </p>
     </div>
   </div>
-  <div>
-    <DataTableServer />
-  </div>
+
 </template>
 
 <style scoped></style>
