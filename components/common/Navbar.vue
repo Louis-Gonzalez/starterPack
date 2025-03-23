@@ -9,28 +9,30 @@
 <script setup lang="ts">
 const routeList = [
   {
-  name: 'Home',
-  path: '/'},
+    name: 'Home',
+    path: '/',
+  },
   {
     name: 'User',
-    path: '/user'},
+    path: '/user',
+  },
   {
     name: 'Admin',
-    path: '/admin'
+    path: '/admin',
   },
   {
     name: 'Login',
-    path: '/authentication/login'
+    path: '/authentication/login',
   },
   {
     name: 'Logout',
-    path: '/authentication/login'
-  }
-]
+    path: '/authentication/login',
+  },
+];
 </script>
 
 <style scoped>
-.navbar{
+.navbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -39,7 +41,7 @@ const routeList = [
   padding: 0.5rem;
   background-color: black;
 }
-.navbar a{
+.navbar a {
   text-decoration: none;
   color: whitesmoke;
   font-size: large;

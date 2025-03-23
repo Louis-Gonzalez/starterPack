@@ -18,7 +18,6 @@ let title = 'This is home page of your project';
       </p>
     </div>
   </div>
-
 </template>
 
 <style scoped></style>
