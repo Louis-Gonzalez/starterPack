@@ -3,7 +3,6 @@
   const userStore = useUserStore();
   const token = userStore.token;
   const user = userStore.user;
-  console.log(token);
 
 </script>
 

@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import YoghurtTable from '~/components/yoghurt/YoghurtTable.vue';
+
+definePageMeta({
+  middleware: ['admin']
+})
 </script>
 
 <template>
@@ -19,4 +23,6 @@ import YoghurtTable from '~/components/yoghurt/YoghurtTable.vue';
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
