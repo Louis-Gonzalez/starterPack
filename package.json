@@ -14,8 +14,10 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^1.2.0",
+    "@pinia/nuxt": "^0.10.1",
     "eslint": "^9.23.0",
     "nuxt": "^3.16.1",
+    "pinia": "^3.0.1",
     "vue": "latest",
     "vue-router": "latest"
   },

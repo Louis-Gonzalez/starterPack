@@ -1,6 +1,6 @@
 # This is a starter pack for a nuxt js project
 
-In this starter pack, you'll find the vuetify dependency, a test dependency, a linter and internationalization (i18n).
+In this starter pack, you'll find the vuetify dependency, a test dependency, a linter, a store, a middleware and internationalization (i18n).
 
 If you're curious, you'll also find the “npm” commands.
 
@@ -28,6 +28,17 @@ the command to run the linter is : `npm run lint .` in your terminal
 npm install --save-dev prettier
 
 the command to run the linter is : `npx prettier --write .` ou `npm run format` in your terminal
+
+### for Pinia Store :
+
+npm i pinia @pinia/nuxt
+
+Thanks to pinia, I've done an authentication on an api that returns a token and a set of user data. (https://dummyjson.com)
+I've integrated it into the navigation bar for behavior.
+
+### Middleware : 
+
+coming soon
 
 ### for I18N :
 

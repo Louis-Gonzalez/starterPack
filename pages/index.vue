@@ -1,11 +1,12 @@
 <script setup lang="ts">
 let title = 'This is home page of your project';
+
 </script>
 
 <template>
   <h1>{{ title }}</h1>
   <div>
-    <h2>This is the home page</h2>
+    <h2>Welcome ! This is the home page</h2>
     <div>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, quaerat.
@@ -13,9 +14,7 @@ let title = 'This is home page of your project';
         assumenda. Quos aspernatur laudantium quibusdam. Placeat expedita
         excepturi quis id quidem?
       </p>
-      <p>
-        <v-btn color="secondary" outlined> Button </v-btn>
-      </p>
+
     </div>
   </div>
 </template>
