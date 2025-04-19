@@ -32,11 +32,11 @@ const routeList = [
   },
   {
     name: 'User',
-    path: '/user',
+    path: '/user/user',
   },
   {
     name: 'Admin',
-    path: '/admin',
+    path: '/admin/admin',
   },
   {
     name: 'Login',

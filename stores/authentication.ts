@@ -14,7 +14,7 @@ export const useUserStore = defineStore('user', () => {
     const setToken = (data?: string) => (token.value = data);
     const setUser = (data?: Customer) => (user.value = data);
     const setCurrentUser = (data?: Customer) => {
-        currentUser.value = data || null; // Set currentUser properly or null if no data
+        currentUser.value = data || null;
     };
 
     const isAdmin = ref(false);
@@ -32,7 +32,7 @@ export const useUserStore = defineStore('user', () => {
             console.error(error);
             setToken();
             setUser();
-            setCurrentUser(null); // Clear currentUser on error
+            setCurrentUser();
             isAdmin.value = false;
             // logout notification
         }
@@ -41,24 +41,24 @@ export const useUserStore = defineStore('user', () => {
     const fetchCustomer = async () => {
         if (token.value) {
             try {
-                const responseCustomer = await $fetch<Customer>('https://dummyjson.com/users/12');
+                const responseCustomer = await $fetch<Customer>('https://dummyjson.com/users/56');
                 setUser(responseCustomer);
-                setCurrentUser(responseCustomer); // Set the currentUser properly
+                setCurrentUser(responseCustomer);
                 if (responseCustomer.role === 'admin') {
                     isAdmin.value = true;
                 }
             } catch (error) {
                 console.error(error);
                 setUser();
-                setCurrentUser(null); // Clear currentUser on error
+                setCurrentUser();
             }
         }
     };
 
     const logout = () => {
-        setUser(null);
+        setUser();
         setToken();
-        setCurrentUser(null); // Clear the currentUser cookie on logout
+        setCurrentUser();
     };
 
     return {
