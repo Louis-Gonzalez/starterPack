@@ -1,9 +1,7 @@
-<script setup lang="ts">
-let title = 'Homepage';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <h1>{{$t('home')}}</h1>
   <div>
     <h2>Welcome ! This is the home page</h2>
     <div>

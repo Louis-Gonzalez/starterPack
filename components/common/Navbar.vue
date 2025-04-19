@@ -11,6 +11,7 @@
         <img class="avatar" :src="avatar" alt="user avatar" />
       </div>
       <div>
+        <LangSwitcher />
         <div v-if="token">
           <v-btn color="error" outlined @click="logOut"> Logout</v-btn>
         </div>
@@ -24,6 +25,7 @@
 
 <script setup lang="ts">
 import { useCookie } from '#app';
+import LangSwitcher from '~/components/common/LangSwitcher.vue';
 
 const routeList = [
   {
