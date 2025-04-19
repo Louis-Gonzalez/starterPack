@@ -8,7 +8,7 @@
     <div class="nav-button">
       <div v-if='token'>
         <p v-if="isAdmin">Admin</p>
-        <img class="avatar" src="https://dummyjson.com/icon/emilys/128" alt="avatar current user">
+        <img class="avatar" :src="avatar" alt="user avatar">
       </div>
       <div>
         <div v-if='token'>
@@ -32,18 +32,14 @@ const routeList = [
   },
   {
     name: 'User',
-    path: '/user',
+    path: '/user/user',
   },
   {
     name: 'Admin',
-    path: '/admin',
+    path: '/admin/admin',
   },
   {
     name: 'Login',
-    path: '/authentication/login',
-  },
-  {
-    name: 'Logout',
     path: '/authentication/login',
   },
 ];
@@ -51,6 +47,14 @@ const userStore = useUserStore();
 
 const token = useCookie('token');
 const isAdmin = userStore.isAdmin;
+const currentUser = useCookie('currentUser');
+let avatar = ref('');
+
+onMounted(() => {
+  if (currentUser.value) {
+    avatar.value = currentUser.value.image;
+  }
+});
 
 const signIn = async () => {
   await userStore.signIn({
