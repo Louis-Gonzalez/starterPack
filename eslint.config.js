@@ -5,5 +5,5 @@ export default defineConfig({
     semi: ['error', 'always'],
     'no-console': 'warn',
     },
-    ignores: ['node_modules/', 'dist/', 'test/', '**/*.spec.js', '.nuxt'],
+    ignores: ['node_modules/', 'dist/', 'test/', '**/*.spec.js', '.nuxt/', '**/*.mjs'],
 });
