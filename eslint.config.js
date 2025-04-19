@@ -1,9 +1,26 @@
-import { defineConfig } from 'eslint/config';
+import js from '@eslint/js';
 
-export default defineConfig({
-  rules: {
-    semi: ['error', 'always'],
-    'no-console': 'warn',
+export default [
+  {
+    ignores: [
+      'node_modules/',
+      '.nuxt/',
+      '.output/',
+      'dist/',
+      'tests/',
+      '**/*.spec.*',
+      '*.config.*',
+      '*.mjs',
+      '*.yaml',
+      '*.yml',
+    ],
   },
-  ignores: ['node_modules/', 'dist/', 'test/', '**/*.spec.js', '.nuxt'],
-});
+  js.configs.recommended,
+  {
+    rules: {
+      semi: ['error', 'always'],
+      'no-console': 'warn',
+    },
+  },
+];
+

@@ -6,12 +6,12 @@
       </div>
     </div>
     <div class="nav-button">
-      <div v-if='token'>
+      <div v-if="token">
         <p v-if="isAdmin">Admin</p>
-        <img class="avatar" :src="avatar" alt="user avatar">
+        <img class="avatar" :src="avatar" alt="user avatar" />
       </div>
       <div>
-        <div v-if='token'>
+        <div v-if="token">
           <v-btn color="error" outlined @click="logOut"> Logout</v-btn>
         </div>
         <div v-else>
@@ -61,12 +61,12 @@ const signIn = async () => {
     username: 'emilys',
     password: 'emilyspass',
   });
-  await navigateTo('/authentication/profile', {replace: true});
-}
+  await navigateTo('/authentication/profile', { replace: true });
+};
 const logOut = async () => {
   userStore.logout();
   await navigateTo('/');
-}
+};
 </script>
 
 <style scoped>
@@ -96,12 +96,11 @@ const logOut = async () => {
   gap: 1rem;
 }
 
-.avatar{
+.avatar {
   width: 3rem;
   height: auto;
 }
-p{
+p {
   color: whitesmoke;
 }
 </style>
-

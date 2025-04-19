@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  const userStore = useUserStore();
-  const token = userStore.token;
-  const user = userStore.user;
+const userStore = useUserStore();
+const token = userStore.token;
+const user = userStore.user;
 </script>
 
 <template>
   <h1>Profile Page</h1>
   <h2>Profile Informations</h2>
   <p>
-    {{token}}
+    {{ token }}
   </p>
   <span></span>
   <p>
@@ -16,6 +16,4 @@
   </p>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

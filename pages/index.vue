@@ -1,6 +1,5 @@
 <script setup lang="ts">
-let title = 'This is home page of your project';
-
+let title = 'Homepage';
 </script>
 
 <template>
@@ -14,7 +13,6 @@ let title = 'This is home page of your project';
         assumenda. Quos aspernatur laudantium quibusdam. Placeat expedita
         excepturi quis id quidem?
       </p>
-
     </div>
   </div>
 </template>

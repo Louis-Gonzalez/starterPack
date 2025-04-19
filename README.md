@@ -36,9 +36,9 @@ npm i pinia @pinia/nuxt
 Thanks to pinia, I've done an authentication on an api that returns a token and a set of user data. (https://dummyjson.com)
 I've integrated it into the navigation bar for behavior.
 
-### Middleware : 
+### Middleware :
 
-coming soon
+Middleware has been added for user, admin and set globally
 
 ### for I18N :
 

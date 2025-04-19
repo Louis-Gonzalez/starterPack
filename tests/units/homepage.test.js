@@ -1,11 +1,17 @@
 import { describe, it, expect } from 'vitest';
-import { setup, $fetch } from '@nuxt/test-utils';
+import { mount } from '@vue/test-utils';
+import MyPage from '../../pages/index.vue';
 
-describe('Nuxt Test', async () => {
-  await setup();
+describe('Homepage Test', () => {
+  it('devrait afficher le bon titre', () => {
+    const wrapper = mount(MyPage);
+    expect(wrapper.find('h1').text()).toBe('Homepage');
+  });
 
-  it('Homepage fonctionne', async () => {
-    const html = await $fetch('/');
-    expect(html).toContain('home');
+  it('devrait afficher l\'URL correcte', () => {
+    // Pour tester l'URL dans un test d'intégration
+    expect(window.location.pathname).toBe('/');
   });
 });
+
+

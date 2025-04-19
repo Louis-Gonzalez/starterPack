@@ -2,8 +2,8 @@
 import YoghurtTable from '~/components/yoghurt/YoghurtTable.vue';
 
 definePageMeta({
-  middleware: ['admin']
-})
+  middleware: ['admin'],
+});
 </script>
 
 <template>
@@ -23,6 +23,4 @@ definePageMeta({
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

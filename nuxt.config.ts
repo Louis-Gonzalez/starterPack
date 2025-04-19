@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/test-utils', '@nuxt/eslint', '@pinia/nuxt'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt'],
   compatibilityDate: '2024-11-01',
   css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css'],
 
