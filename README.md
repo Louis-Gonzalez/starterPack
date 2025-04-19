@@ -42,4 +42,6 @@ Middleware has been added for user, admin and set globally
 
 ### for I18N :
 
-coming soon ......
+npx nuxi@latest module add i18n
+
+link to dependence: (https://nuxt.com/modules?q=i18n) and link to documentation (https://i18n.nuxtjs.org/docs/guide/lang-switcher)
