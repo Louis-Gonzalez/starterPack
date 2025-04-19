@@ -15,7 +15,7 @@ npm i @mdi/font
 
 npx nuxi@latest module add test-utils
 
-the command to run the tests is : `npx vitest` in your terminal
+the command to run the linter is : `npx vitest` in your terminal
 
 ### for ESLint :
 
