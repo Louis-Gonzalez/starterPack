@@ -45,3 +45,20 @@ Middleware has been added for user, admin and set globally
 npx nuxi@latest module add i18n
 
 link to dependence: (https://nuxt.com/modules?q=i18n) and link to documentation (https://i18n.nuxtjs.org/docs/guide/lang-switcher)
+
+### for SVG :
+
+npx nuxi@latest module add nuxt-svgo
+npm install -D vite-svg-loader
+
+**SVGO** and **vite-svg-loader** work together to optimize and import SVG files as Vue components.  
+This allows you to use SVGs (monochrome or multicolor) directly in your templates without relying on `<img>` tags.
+
+```vue
+<script setup>
+import MyIcon from '~/assets/icons/my-icon.svg';
+</script>
+
+<template>
+  <MyIcon />
+</template>
