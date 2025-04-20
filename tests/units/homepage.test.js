@@ -8,10 +8,8 @@ describe('Homepage Test', () => {
     expect(wrapper.find('h1').text()).toBe('Homepage');
   });
 
-  it('devrait afficher l\'URL correcte', () => {
+  it("devrait afficher l'URL correcte", () => {
     // Pour tester l'URL dans un test d'intégration
     expect(window.location.pathname).toBe('/');
   });
 });
-
-

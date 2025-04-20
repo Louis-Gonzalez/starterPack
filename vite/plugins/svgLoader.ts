@@ -1,4 +1,4 @@
-import svgLoader from 'vite-svg-loader'
+import svgLoader from 'vite-svg-loader';
 
 export default () =>
   svgLoader({
@@ -6,8 +6,8 @@ export default () =>
     svgoConfig: {
       plugins: [
         {
-          name: 'removeDimensions'
+          name: 'removeDimensions',
         },
-      ]
-    }
-  })
+      ],
+    },
+  });

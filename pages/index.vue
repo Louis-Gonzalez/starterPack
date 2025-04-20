@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import Home from './../assets/icons/home.svg'
-import Microsoft from './../assets/icons/microsoft.svg'
-const colorSvg = ['deeppink', 'darkblue', 'darkcyan', 'darkgreen', 'darkorange', 'olive', 'crimson', 'chartreuse', 'cornFlowerBlue', 'gold','magenta']
+import Home from './../assets/icons/home.svg';
+import Microsoft from './../assets/icons/microsoft.svg';
+const colorSvg = [
+  'deeppink',
+  'darkblue',
+  'darkcyan',
+  'darkgreen',
+  'darkorange',
+  'olive',
+  'crimson',
+  'chartreuse',
+  'cornFlowerBlue',
+  'gold',
+  'magenta',
+];
 
-const currentColor = ref(colorSvg[0])
+const currentColor = ref(colorSvg[0]);
 
 const changeColor = () => {
-  const randomIndex = Math.floor(Math.random() * colorSvg.length)
-  currentColor.value = colorSvg[randomIndex]
-}
-
+  const randomIndex = Math.floor(Math.random() * colorSvg.length);
+  currentColor.value = colorSvg[randomIndex];
+};
 </script>
 
 <template>
@@ -43,14 +54,13 @@ const changeColor = () => {
   </section>
 </template>
 
-
 <style scoped>
 .home-svg {
   transition: fill 0.3s ease;
 }
 
 svg {
-  width:4rem;
+  width: 4rem;
   height: 4rem;
 }
 </style>

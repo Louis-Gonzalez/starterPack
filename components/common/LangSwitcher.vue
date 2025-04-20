@@ -1,22 +1,22 @@
 <script setup>
-import { useCookie } from '#app'
+import { useCookie } from '#app';
 
 defineProps({
-  themeClass: String
-})
+  themeClass: String,
+});
 
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales, setLocale } = useI18n();
 const userLanguage = useCookie('i18n', {
   maxAge: 10 * 60 * 60 * 30,
-})
+});
 
 const availableLocales = computed(() => {
-  return locales.value.filter(i => i.code !== locale.value)
-})
+  return locales.value.filter((i) => i.code !== locale.value);
+});
 
 async function changeLocale(newLocale) {
-  await setLocale(newLocale)
-  userLanguage.value = newLocale
+  await setLocale(newLocale);
+  userLanguage.value = newLocale;
 }
 </script>
 
@@ -45,7 +45,9 @@ async function changeLocale(newLocale) {
   cursor: pointer;
   font-weight: bold;
   border: 1px solid var(--main-success);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .dark-theme .lang-btn {

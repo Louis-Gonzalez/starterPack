@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-
-
 import { useCookie } from '#app';
 import LangSwitcher from '~/components/common/LangSwitcher.vue';
 
@@ -129,7 +127,7 @@ p {
   color: var(--main-color3);
 }
 
-.toggle-light-dark{
+.toggle-light-dark {
   margin: 1rem;
   padding: 0.5rem;
   color: var(--main-success);

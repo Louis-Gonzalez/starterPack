@@ -1,9 +1,16 @@
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig({
-    rules: {
+  rules: {
     semi: ['error', 'always'],
     'no-console': 'warn',
-    },
-    ignores: ['node_modules/', 'dist/', 'test/', '**/*.spec.js', '.nuxt/', '**/*.mjs'],
+  },
+  ignores: [
+    'node_modules/',
+    'dist/',
+    'test/',
+    '**/*.spec.js',
+    '.nuxt/',
+    '**/*.mjs',
+  ],
 });
