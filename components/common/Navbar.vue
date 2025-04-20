@@ -95,7 +95,7 @@ const themeClass = computed(() => {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-  background-color: black;
+  background-color: var(--main-color3);
 }
 
 .nav-links {
@@ -106,7 +106,7 @@ const themeClass = computed(() => {
 
 .navbar a {
   text-decoration: none;
-  color: whitesmoke;
+  color: var(--main-secondary);
   font-size: large;
 }
 
@@ -127,8 +127,8 @@ p {
 .toggle-light-dark{
   margin: 1rem;
   padding: 0.5rem;
-  color: var(--color-success);
-  border: 1px solid var(--color-success);
+  color: var(--main-success);
+  border: 1px solid var(--main-success);
   border-radius: 0.5rem;
 }
 

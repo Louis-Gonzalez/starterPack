@@ -36,12 +36,12 @@ async function changeLocale(newLocale) {
   border-radius: 0.5rem;
   background-color: #333;
   color: white;
-  border: 1px solid var(--color-success);
+  border: 1px solid var(--main-success);
 }
 .light-theme button {
   border-radius: 0.5rem;
   background-color: #fff;
   color: black;
-  border: 1px solid var(--color-success);
+  border: 1px solid var(--main-success);
 }
 </style>
