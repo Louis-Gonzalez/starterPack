@@ -18,6 +18,7 @@
     "@pinia/nuxt": "^0.10.1",
     "eslint": "^9.23.0",
     "nuxt": "^3.16.1",
+    "nuxt-svgo": "^4.0.17",
     "pinia": "^3.0.1",
     "vue": "latest",
     "vue-router": "latest"
@@ -32,6 +33,7 @@
     "prettier": "^3.5.3",
     "sass": "^1.86.0",
     "vite-plugin-vuetify": "^2.1.0",
+    "vite-svg-loader": "^5.1.0",
     "vitest": "^3.1.1",
     "vuetify": "^3.7.18"
   }

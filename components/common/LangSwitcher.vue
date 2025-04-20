@@ -30,8 +30,9 @@ async function changeLocale(newLocale) {
 button {
   margin-right: 0.5rem;
   padding: 0.25rem 0.5rem;
-  border: 1px solid #ccc;
-  background: white;
+  border: 1px solid var(--color-color3);
+  background: var(--color-color3);
   cursor: pointer;
+  color: var(--color-primary);
 }
 </style>

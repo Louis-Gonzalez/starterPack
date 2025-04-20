@@ -1,5 +1,6 @@
+import svgLoader from './vite/plugins/svgLoader';
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n', "nuxt-svgo"],
   i18n: {
     lazy: true,
     langDir : "locales/",
@@ -40,7 +41,7 @@ export default defineNuxtConfig({
     vueI18n: './i18nConfig.js'
   },
   compatibilityDate: '2024-11-01',
-  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css'],
+  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css', '@/assets/css/main.css'],
   vite: {
     define: { 'process.env.DEBUG': false },
     css: {
@@ -50,6 +51,7 @@ export default defineNuxtConfig({
         },
       },
     },
+    plugins: [svgLoader()]
   },
   build: {
     transpile: ['vuetify'],

@@ -11,6 +11,11 @@
         <img class="avatar" :src="avatar" alt="user avatar" />
       </div>
       <div>
+        <button @click="toggleTheme" class="toggle-light-dark">
+          Switch to {{ theme.global.name.value === 'light' ? 'dark' : 'light' }}
+        </button>
+      </div>
+      <div>
         <LangSwitcher />
         <div v-if="token">
           <v-btn color="error" outlined @click="logOut"> Logout</v-btn>
@@ -69,6 +74,15 @@ const logOut = async () => {
   userStore.logout();
   await navigateTo('/');
 };
+
+/////// theme light / dark //////
+import { useTheme } from 'vuetify';
+const theme = useTheme();
+
+const toggleTheme = () => {
+  theme.global.name.value =
+    theme.global.name.value === 'light' ? 'dark' : 'light';
+};
 </script>
 
 <style scoped>
@@ -104,5 +118,9 @@ const logOut = async () => {
 }
 p {
   color: whitesmoke;
+}
+
+.toggle-light-dark{
+  color: var(--color-success);
 }
 </style>
