@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav :class="themeClass" class="navbar">
     <div class="nav-links">
       <div v-for="route in routeList" :key="route.path">
         <NuxtLink :to="route.path">{{ route.name }}</NuxtLink>
@@ -16,7 +16,7 @@
         </button>
       </div>
       <div>
-        <LangSwitcher />
+        <LangSwitcher :class="themeClass" />
         <div v-if="token">
           <v-btn color="error" outlined @click="logOut"> Logout</v-btn>
         </div>
@@ -83,6 +83,10 @@ const toggleTheme = () => {
   theme.global.name.value =
     theme.global.name.value === 'light' ? 'dark' : 'light';
 };
+
+const themeClass = computed(() => {
+  return theme.global.name.value === 'dark' ? 'dark-theme' : 'light-theme';
+});
 </script>
 
 <style scoped>
@@ -121,6 +125,20 @@ p {
 }
 
 .toggle-light-dark{
+  margin: 1rem;
+  padding: 0.5rem;
   color: var(--color-success);
+  border: 1px solid var(--color-success);
+  border-radius: 0.5rem;
+}
+
+.dark-theme .toggle-light-dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.light-theme .toggle-light-dark {
+  background-color: #fff;
+  color: #333;
 }
 </style>

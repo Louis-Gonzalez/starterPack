@@ -1,6 +1,10 @@
 <script setup>
 import { useCookie } from '#app'
 
+defineProps({
+  themeClass: String
+})
+
 const { locale, locales, setLocale } = useI18n()
 const userLanguage = useCookie('i18n', {
   maxAge: 10 * 60 * 60 * 30,
@@ -16,8 +20,9 @@ async function changeLocale(newLocale) {
 }
 </script>
 
-<template>
+<template :class="themeClass">
   <button
+    class="ma-1 pa-1"
     v-for="loc in availableLocales"
     :key="loc.code"
     @click="changeLocale(loc.code)"
@@ -27,12 +32,16 @@ async function changeLocale(newLocale) {
 </template>
 
 <style scoped>
-button {
-  margin-right: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid var(--color-color3);
-  background: var(--color-color3);
-  cursor: pointer;
-  color: var(--color-primary);
+.dark-theme button {
+  border-radius: 0.5rem;
+  background-color: #333;
+  color: white;
+  border: 1px solid var(--color-success);
+}
+.light-theme button {
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: black;
+  border: 1px solid var(--color-success);
 }
 </style>

@@ -24,6 +24,7 @@ export default defineNuxtPlugin((nuxt) => {
             color1: '#9C27B0',
             color2: '#FFEB3B',
             color3: '#795548',
+            color4: '#121212',
           },
         },
         dark: {
@@ -37,6 +38,7 @@ export default defineNuxtPlugin((nuxt) => {
             color1: '#CE93D8',
             color2: '#FFF176',
             color3: '#A1887F',
+            color4: '#FFCDD2',
             background: '#121212',
             text: '#FFFFFF',
           },
