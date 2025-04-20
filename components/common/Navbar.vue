@@ -1,5 +1,5 @@
 <template>
-  <nav :class="themeClass" class="navbar">
+  <nav class="navbar">
     <div class="nav-links">
       <div v-for="route in routeList" :key="route.path">
         <NuxtLink :to="route.path">{{ route.name }}</NuxtLink>
@@ -29,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+
+
 import { useCookie } from '#app';
 import LangSwitcher from '~/components/common/LangSwitcher.vue';
 
@@ -79,14 +81,16 @@ const logOut = async () => {
 import { useTheme } from 'vuetify';
 const theme = useTheme();
 
+///////// vuetify //////////////
+const themeClass = computed(() => {
+  return theme.global.name.value === 'dark' ? 'dark-theme' : 'light-theme';
+});
+
+//////// main.css ////////////////
 const toggleTheme = () => {
   theme.global.name.value =
     theme.global.name.value === 'light' ? 'dark' : 'light';
 };
-
-const themeClass = computed(() => {
-  return theme.global.name.value === 'dark' ? 'dark-theme' : 'light-theme';
-});
 </script>
 
 <style scoped>
@@ -120,8 +124,9 @@ const themeClass = computed(() => {
   width: 3rem;
   height: auto;
 }
+
 p {
-  color: whitesmoke;
+  color: var(--main-color3);
 }
 
 .toggle-light-dark{
@@ -130,15 +135,5 @@ p {
   color: var(--main-success);
   border: 1px solid var(--main-success);
   border-radius: 0.5rem;
-}
-
-.dark-theme .toggle-light-dark {
-  background-color: #333;
-  color: #fff;
-}
-
-.light-theme .toggle-light-dark {
-  background-color: #fff;
-  color: #333;
 }
 </style>

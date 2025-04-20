@@ -20,28 +20,46 @@ async function changeLocale(newLocale) {
 }
 </script>
 
-<template :class="themeClass">
-  <button
-    class="ma-1 pa-1"
-    v-for="loc in availableLocales"
-    :key="loc.code"
-    @click="changeLocale(loc.code)"
-  >
-    {{ loc.name }}
-  </button>
+<template>
+  <div class="lang-switcher">
+    <button
+      v-for="locale in availableLocales"
+      :key="locale.code"
+      @click="setLocale(locale.code)"
+      :class="['lang-btn', { active: locale.code === currentLocale }]"
+    >
+      {{ locale.name }}
+    </button>
+  </div>
 </template>
 
 <style scoped>
-.dark-theme button {
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lang-btn {
+  padding: 0.4rem 0.8rem;
   border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid var(--main-success);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme .lang-btn {
   background-color: #333;
   color: white;
-  border: 1px solid var(--main-success);
 }
-.light-theme button {
-  border-radius: 0.5rem;
+
+.light-theme .lang-btn {
   background-color: #fff;
   color: black;
-  border: 1px solid var(--main-success);
+}
+
+.lang-btn.active {
+  background-color: var(--main-success);
+  color: white;
 }
 </style>
