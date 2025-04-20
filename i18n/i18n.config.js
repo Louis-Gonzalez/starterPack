@@ -16,4 +16,3 @@ export default {
     'de-DE': { ...localeDE },
   },
 };
-
