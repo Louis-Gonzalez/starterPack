@@ -38,7 +38,7 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
     },
-    vueI18n: './i18nConfig.js',
+    vueI18n: './i18n.config.js',
   },
   compatibilityDate: '2024-11-01',
   css: [
