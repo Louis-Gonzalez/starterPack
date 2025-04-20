@@ -1,33 +1,3 @@
-<template>
-  <nav class="navbar">
-    <div class="nav-links">
-      <div v-for="route in routeList" :key="route.path">
-        <NuxtLink :to="route.path">{{ route.name }}</NuxtLink>
-      </div>
-    </div>
-    <div class="nav-button">
-      <div v-if="token">
-        <p v-if="isAdmin">Admin</p>
-        <img class="avatar" :src="avatar" alt="user avatar" />
-      </div>
-      <div>
-        <button @click="toggleTheme" class="toggle-light-dark">
-          Switch to {{ theme.global.name.value === 'light' ? 'dark' : 'light' }}
-        </button>
-      </div>
-      <div>
-        <LangSwitcher :class="themeClass" />
-        <div v-if="token">
-          <v-btn color="error" outlined @click="logOut"> Logout</v-btn>
-        </div>
-        <div v-else>
-          <v-btn color="secondary" outlined @click="signIn">Login</v-btn>
-        </div>
-      </div>
-    </div>
-  </nav>
-</template>
-
 <script setup lang="ts">
 import { useCookie } from '#app';
 import LangSwitcher from '~/components/common/LangSwitcher.vue';
@@ -58,7 +28,7 @@ const currentUser = useCookie('currentUser');
 let avatar = ref('');
 
 onMounted(() => {
-  if (currentUser.value) {
+  if (currentUser.value && currentUser.value.image) {
     avatar.value = currentUser.value.image;
   }
 });
@@ -90,6 +60,41 @@ const toggleTheme = () => {
     theme.global.name.value === 'light' ? 'dark' : 'light';
 };
 </script>
+
+<template>
+  <nav class="navbar">
+    <div class="nav-links">
+      <div v-for="route in routeList" :key="route.path">
+        <NuxtLink :to="route.path">{{ route.name }}</NuxtLink>
+      </div>
+    </div>
+    <div class="nav-button">
+      <div v-if="token">
+        <p v-if="isAdmin">Admin</p>
+        <img
+          v-if="currentUser"
+          class="avatar"
+          :src="avatar"
+          alt="user avatar"
+        />
+      </div>
+      <div>
+        <button @click="toggleTheme" class="toggle-light-dark">
+          Switch to {{ theme.global.name.value === 'light' ? 'dark' : 'light' }}
+        </button>
+      </div>
+      <div>
+        <LangSwitcher :class="themeClass" />
+        <div v-if="token">
+          <v-btn color="error" outlined @click="logOut"> Logout</v-btn>
+        </div>
+        <div v-else>
+          <v-btn color="secondary" outlined @click="signIn">Login</v-btn>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
 
 <style scoped>
 .navbar {

@@ -1,5 +1,6 @@
 <script setup>
 import { useCookie } from '#app';
+import { useI18n } from 'vue-i18n';
 
 defineProps({
   themeClass: String,
@@ -23,12 +24,12 @@ async function changeLocale(newLocale) {
 <template>
   <div class="lang-switcher">
     <button
-      v-for="locale in availableLocales"
-      :key="locale.code"
-      @click="setLocale(locale.code)"
-      :class="['lang-btn', { active: locale.code === currentLocale }]"
+      v-for="localeItem in availableLocales"
+      :key="localeItem.code"
+      @click="changeLocale(localeItem.code)"
+      :class="['lang-btn', { active: localeItem.code === locale.value }]"
     >
-      {{ locale.name }}
+      {{ localeItem.name }}
     </button>
   </div>
 </template>
