@@ -39,6 +39,11 @@ export default defineNuxtConfig({
       redirectOn: 'root',
     },
     vueI18n: './i18n.config.js',
+    experimental: {
+      bundle: {
+        optimizeTranslationDirective: false
+      }
+    },
   },
   compatibilityDate: '2024-11-01',
   css: [
