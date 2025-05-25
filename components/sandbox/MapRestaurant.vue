@@ -41,6 +41,10 @@ function toggleTable(table) {
     selectedTables.value.push(table)
   }
 }
+
+function removeTable(numero) {
+  selectedTables.value = selectedTables.value.filter(t => t.numero !== numero)
+}
 </script>
 
 <template>
@@ -100,9 +104,18 @@ function toggleTable(table) {
           <v-card
             v-for="table in selectedTables"
             :key="'card-' + table.numero"
-            class="mb-4 pa-4"
+            class="mb-4 pa-4 position-relative"
             elevation="2"
           >
+            <v-btn
+              variant="text"
+              size="x-small"
+              class="close-btn position-absolute top-0 right-0 mt-2 mr-2"
+              @click="removeTable(table.numero)"
+            >
+              <v-icon size="18">mdi-close</v-icon>
+            </v-btn>
+
             <v-card-title>Table {{ table.numero }}</v-card-title>
             <v-card-text>
               <p><strong>Status :</strong> {{ table.status }}</p>
@@ -110,6 +123,7 @@ function toggleTable(table) {
               <p><strong>Position :</strong> (x: {{ table.x }}, y: {{ table.y }})</p>
             </v-card-text>
           </v-card>
+
           <div v-if="selectedTables.length === 0" class="ma-4 pa-4">
             <em>Cliquez sur une table pour voir ses infos.</em>
           </div>
@@ -123,4 +137,11 @@ function toggleTable(table) {
 .border-blue {
   border-color: #1976d2 !important;
 }
+.close-btn {
+  border-radius: 2px !important;
+  min-width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
 </style>
