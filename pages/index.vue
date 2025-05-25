@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
+import MapRestaurant from '~/components/sandbox/MapRestaurant.vue';
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -51,6 +52,9 @@ const changeColor = () => {
         </div>
       </div>
     </div>
+  </section>
+  <section>
+    <MapRestaurant />
   </section>
 </template>
 
