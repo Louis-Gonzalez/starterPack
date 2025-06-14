@@ -10,8 +10,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "check-i18n": "node scripts/check-i18n.js"
-
+    "check-i18n": "node scripts/check-i18n.js",
+    "test": "vitest"
 },
   "dependencies": {
     "@mdi/font": "^7.4.47",
