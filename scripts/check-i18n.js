@@ -3,7 +3,7 @@ import path from 'node:path';
 import readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 
-const localesDir = path.join(process.cwd(), 'i18n/locales'); // adapte selon ton dossier
+const localesDir = path.join(process.cwd(), 'i18n/locales');
 
 const rl = readline.createInterface({ input, output });
 
@@ -14,77 +14,146 @@ function sortObject(obj) {
   }, {});
 }
 
-function formatJson(obj) {
-  const keys = Object.keys(obj);
+function formatJsonWithCorrectCommas(sortedObj) {
+  const entries = Object.entries(sortedObj);
   const lines = ['{'];
-  keys.forEach((key, i) => {
-    const comma = i < keys.length - 1 ? ',' : '';
-    lines.push(`  "${key}": ${JSON.stringify(obj[key])}${comma}`);
+
+  entries.forEach(([key, value], index) => {
+    const comma = index < entries.length - 1 ? ',' : '';
+    lines.push(`  "${key}": ${JSON.stringify(value)}${comma}`);
   });
+
   lines.push('}');
   return lines.join('\n');
 }
 
-async function askValidLine(originalLine, filename, lineNumber) {
-  const regex = /^\s*"([^"]+)"\s*:\s*"([^"]*)"\s*,?\s*$/; // clé: "valeur" strict, virgule optionnelle
+async function correctMalformedLines(rawLines, filename) {
+  const keyValueRegex = /^\s*"(.+?)"\s*:\s*(.+?)(,?)\s*$/;
 
-  let line = originalLine;
-  while (!regex.test(line.trim())) {
-    console.log(`\n❌ Ligne mal formée dans ${filename} (ligne ${lineNumber}):`);
-    console.log(`> ${line}`);
-    line = await rl.question('Corrige la ligne (doit être au format  "key": "value", ) : ');
+  for (let i = 0; i < rawLines.length; i++) {
+    const line = rawLines[i];
+    if (
+      line.trim() !== '{' &&
+      line.trim() !== '}' &&
+      line.trim() !== ''
+    ) {
+      const match = keyValueRegex.exec(line);
+      if (!match) {
+        console.log(`\n⚠️ Ligne mal formée détectée dans ${filename} (ligne ${i + 1}):`);
+        console.log(`> ${line}`);
+        let newLine = await rl.question('Corrige cette ligne (format "key": value,) ou appuie sur Entrée pour ignorer : ');
+        while (newLine.trim() !== '') {
+          if (keyValueRegex.test(newLine.trim())) break;
+          console.log('Format invalide, assure-toi que la ligne soit au format: "clé": valeur,');
+          newLine = await rl.question('Corrige cette ligne ou appuie sur Entrée pour ignorer : ');
+        }
+        if (newLine.trim() !== '') {
+          rawLines[i] = newLine;
+          console.log(`Ligne corrigée en: ${newLine}`);
+        } else {
+          console.log('Ignoré, la ligne reste inchangée.');
+        }
+      } else {
+        const rawValue = match[2].trim().replace(/,$/, '');
+        try {
+          const parsed = JSON.parse(rawValue);
+          if (typeof parsed === 'string' && (parsed === '' || parsed === '"' || parsed === '\\')) {
+            throw new Error('Valeur JSON invalide ou suspecte');
+          }
+        } catch {
+          console.log(`\n⚠️ Valeur JSON invalide ou suspecte détectée dans ${filename} (ligne ${i + 1}):`);
+          console.log(`> ${line}`);
+          let newLine = await rl.question('Corrige cette ligne (format "key": value,) ou appuie sur Entrée pour ignorer : ');
+          while (newLine.trim() !== '') {
+            if (keyValueRegex.test(newLine.trim())) {
+              try {
+                const val = JSON.parse(newLine.trim().match(keyValueRegex)[2].replace(/,$/, ''));
+                if (typeof val === 'string' && (val === '' || val === '"' || val === '\\')) {
+                  throw new Error('Valeur JSON invalide');
+                }
+                break;
+              } catch {
+                // continue la boucle
+              }
+            }
+            console.log('Format invalide, assure-toi que la ligne soit au format: "clé": valeur, avec valeur JSON valide');
+            newLine = await rl.question('Corrige cette ligne ou appuie sur Entrée pour ignorer : ');
+          }
+          if (newLine.trim() !== '') {
+            rawLines[i] = newLine;
+            console.log(`Ligne corrigée en: ${newLine}`);
+          } else {
+            console.log('Ignoré, la ligne reste inchangée.');
+          }
+        }
+      }
+    }
   }
-  return line;
+  return rawLines;
 }
 
 async function processFile(filepath) {
   const filename = path.basename(filepath);
-  const raw = fs.readFileSync(filepath, 'utf-8');
-  const lines = raw.trim().split('\n');
+  let rawContent = fs.readFileSync(filepath, 'utf-8');
+  let rawLines = rawContent.trim().split('\n');
 
-  // On ignore la première et dernière ligne { }
-  const contentLines = lines.slice(1, lines.length - 1);
-  const fixedLines = [];
+  rawLines = await correctMalformedLines(rawLines, filename);
 
-  for (let i = 0; i < contentLines.length; i++) {
-    const lineNumber = i + 2; // +2 car on a enlevé la 1ere ligne '{'
-    const line = contentLines[i];
-
-    const fixedLine = await askValidLine(line, filename, lineNumber);
-    fixedLines.push(fixedLine.trim().replace(/,$/, '')); // on enlève virgule pour l'instant
-  }
-
-  // Extraire clé-valeur en objet
+  // Extraire les paires clé-valeur corrigées
   const obj = {};
-  for (const line of fixedLines) {
-    const match = line.match(/^\s*"([^"]+)"\s*:\s*"([^"]*)"\s*$/);
+  const keyValueRegex = /^\s*"(.+?)"\s*:\s*(.+?)(,?)\s*$/;
+
+  for (const line of rawLines) {
+    const match = keyValueRegex.exec(line);
     if (match) {
-      const [, key, value] = match;
-      obj[key] = value;
+      const [, key, rawValue] = match;
+      try {
+        obj[key] = JSON.parse(rawValue.replace(/,$/, '').trim());
+      } catch {
+        obj[key] = rawValue.replace(/,$/, '').trim();
+      }
     }
   }
 
-  // Trier par clé
   const sorted = sortObject(obj);
-
-  // Réécrire JSON avec virgules bien placées
-  const formatted = formatJson(sorted);
-
-  // Écrire fichier corrigé
+  const formatted = formatJsonWithCorrectCommas(sorted);
   fs.writeFileSync(filepath, formatted, 'utf-8');
   console.log(`\n✅ ${filename} corrigé et sauvegardé.`);
+
+  return sorted; // retourne l'objet trié pour collecte globale
 }
 
 async function main() {
   const files = fs.readdirSync(localesDir).filter(f => f.endsWith('.json'));
+  const allTranslations = {};
+  const allKeys = new Set();
 
+  // 1) Correction + collecte de tous les objets
   for (const file of files) {
-    const filepath = path.join(localesDir, file);
-    await processFile(filepath);
+    const fullPath = path.join(localesDir, file);
+    const translations = await processFile(fullPath);
+    allTranslations[file] = translations;
+    Object.keys(translations).forEach(k => allKeys.add(k));
+  }
+
+  // 2) Rapport des clés manquantes par fichier
+  const report = [];
+  for (const file of files) {
+    const keysInFile = Object.keys(allTranslations[file]);
+    const missing = [...allKeys].filter(k => !keysInFile.includes(k));
+    if (missing.length) {
+      report.push(`\n📂 Fichier : ${file}`);
+      report.push(`  ❌ Clés manquantes (${missing.length}) : ${missing.join(', ')}`);
+    }
   }
 
   rl.close();
-  console.log('\n🎉 Tous les fichiers ont été traités !');
+
+  if (report.length === 0) {
+    console.log('\n✅ Tous les fichiers sont valides, triés, sans doublons et complets ✅');
+  } else {
+    console.log(report.join('\n'));
+  }
 }
 
 main();
