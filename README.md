@@ -46,6 +46,19 @@ npx nuxi@latest module add i18n
 
 link to dependence: (https://nuxt.com/modules?q=i18n) and link to documentation (https://i18n.nuxtjs.org/docs/guide/lang-switcher)
 
+### Special Script: check-i18n
+
+My check-i18n script is designed to keep translation files functional and make multilingual application development easier. 
+During merges, conflicts are common, and this tool will hopefully help you a lot.
+
+✅ Interactive correction of incorrect lines
+✅ Detection and manual handling of duplicate keys (even multiple ones)
+✅ Sorting of keys
+✅ Implicit removal of empty lines
+✅ Report of missing keys between files
+
+Command to run the script: `npm run check-i18n`
+
 ### for SVG :
 
 npx nuxi@latest module add nuxt-svgo

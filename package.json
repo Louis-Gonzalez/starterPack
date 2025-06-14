@@ -9,8 +9,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "format": "prettier --write ."
-  },
+    "format": "prettier --write .",
+    "check-i18n": "node scripts/check-i18n.js"
+
+},
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^1.2.0",
