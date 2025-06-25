@@ -1,3 +1,8 @@
 {
-  "home": "Homepage"
+  "home": "Homepage",
+  "active": "Active",
+  "inactive": "Inactive",
+  "reserved": "Reserved",
+  "available": "Available",
+  "planned": "Planned"
 }
