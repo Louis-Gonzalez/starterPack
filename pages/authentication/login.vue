@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import MyComponent from '../../components/common/MyComponent.vue';
+const myComponentProps = ref('This is my props')
+</script>
 
 <template>
   <h1>This is Login Page</h1>
@@ -12,6 +16,15 @@
     tempor sagittis sit amet nec dui. Maecenas efficitur mauris nisl, a tempor
     nisi fringilla ac. Curabitur molestie leo nec nunc gravida auctor.
   </p>
+  <p>
+    <img src="/favicon.ico" alt="nuxt icon" class="logo-nuxt-icon" />
+  </p>
+  <MyComponent :my-component-props="myComponentProps" />
 </template>
 
-<style scoped></style>
+<style scoped>
+.logo-nuxt-icon{
+  width: 10rem;
+  height: auto;
+}
+</style>

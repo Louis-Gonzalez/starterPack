@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "check-i18n": "node scripts/check-i18n.js",
     "test": "vitest"
-},
+  },
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^1.2.0",

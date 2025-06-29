@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useI18n} from 'vue-i18n';
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
+
+const { t } = useI18n();
+
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -25,7 +30,7 @@ const changeColor = () => {
 
 <template>
   <section>
-    <h1>{{ $t('home') }}</h1>
+    <h1>{{ t('home') }}</h1>
     <div>
       <h2>Welcome! This is the home page</h2>
       <p>
