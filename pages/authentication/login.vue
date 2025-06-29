@@ -2,6 +2,15 @@
 import { ref } from 'vue'
 import MyComponent from '../../components/common/MyComponent.vue';
 const myComponentProps = ref('This is my props')
+const countHtml = ref(0)
+
+const htmlButtonMore = () =>{
+  countHtml.value++
+}
+
+const htmlButtonLess = () =>{
+  countHtml.value--
+}
 </script>
 
 <template>
@@ -20,11 +29,23 @@ const myComponentProps = ref('This is my props')
     <img src="/favicon.ico" alt="nuxt icon" class="logo-nuxt-icon" />
   </p>
   <MyComponent :my-component-props="myComponentProps" />
+  <p>
+    <button class="btn" @click='htmlButtonMore'>Click Me +1 (html button)</button>
+    <button class="btn" @click='htmlButtonLess'>Click Me -1 (html button)</button>
+    {{countHtml}}
+  </p>
 </template>
 
 <style scoped>
 .logo-nuxt-icon{
   width: 10rem;
   height: auto;
+}
+.btn{
+  padding: 1rem;
+  text-align: center;
+  border: #4caf50 solid 1px;
+  border-radius: 1rem;
+  margin: 0.5rem;
 }
 </style>

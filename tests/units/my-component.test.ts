@@ -16,6 +16,14 @@ describe('MyComponent.vue', () => {
     expect(title.exists()).toBe(true)
     expect(title.text()).toContain('This is a paragraph title')
 
+  })
+
+  it('affiche la props du paragraphe', () => {
+    const wrapper = mount(MyComponent, {
+      props: {
+        myComponentProps: 'This is my props'
+      }
+    })
     // Vérifie que le paragraphe affiche la prop passée
     expect(wrapper.find('p').text()).toBe('This is my props')
   })
