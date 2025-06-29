@@ -31,8 +31,8 @@ const htmlButtonLess = () =>{
   <MyComponent :my-component-props="myComponentProps" />
   <p>
     <button class="btn" @click='htmlButtonMore'>Click Me +1 (html button)</button>
-    <button class="btn" @click='htmlButtonLess'>Click Me -1 (html button)</button>
-    {{countHtml}}
+    <button class="btn-less" @click="htmlButtonLess">Click Me -1 (html button)</button>
+    <span :class=" countHtml >=0 ? '' :'red-class'"  data-testid="count">{{countHtml}}</span>
   </p>
 </template>
 
@@ -41,11 +41,15 @@ const htmlButtonLess = () =>{
   width: 10rem;
   height: auto;
 }
+.btn-less,
 .btn{
   padding: 1rem;
   text-align: center;
   border: #4caf50 solid 1px;
   border-radius: 1rem;
   margin: 0.5rem;
+}
+.red-class {
+  color: #e53935;
 }
 </style>

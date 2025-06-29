@@ -30,28 +30,36 @@ describe('LoginPage', () => {
   it('incrémente et décrémente le compteur quand on clique sur les boutons', async () =>{
     const wrapper = mount(LoginPage)
 
-    // On récupère les deux boutons
     const buttons = wrapper.findAll('button')
     const btnAdd = buttons[0]
     const btnSubtract = buttons[1]
 
-    // Le compteur est affiché dans le même <p> que les boutons
     const count = () => wrapper.findAll('p')[2].text()
 
-    // on vérifie que la valeur du début est 0
     expect(count()).toContain('0')
 
-    // Incrémentation
     await btnAdd.trigger('click')
     expect(count()).toContain('1')
 
-    // Nouvelle incrémentation
     await btnAdd.trigger('click')
     expect(count()).toContain('2')
 
-    // Décrémentation
     await btnSubtract.trigger('click')
     expect(count()).toContain('1')
   })
 
+  it('ajoute la classe "red-class" si countHtml est négatif', async () => {
+    const wrapper = mount(LoginPage)
+
+    const btnSubtract = wrapper.findAll('button')[1]
+    const countSpan = wrapper.get('[data-testid="count"]') // pour cibler un éléement précisemenent
+
+    expect(countSpan.exists()).toBe(true)
+    expect(countSpan.classes()).not.toContain('red-class')
+
+    await btnSubtract.trigger('click')
+    await btnSubtract.trigger('click')
+
+    expect(countSpan.classes()).toContain('red-class')
+  })
 })
