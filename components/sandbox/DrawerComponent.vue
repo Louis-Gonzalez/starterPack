@@ -1,32 +1,17 @@
 <template>
   <v-card>
     <v-layout>
-      <v-app-bar color="primary">
-        <v-app-bar-nav-icon variant="text">
-          <template #default>
-            <div>
-              <!-- Bouton ouvrir (flèche droite) quand drawer fermé -->
-              <v-btn
-                icon
-                v-if="!drawer"
-                @click.stop="openDrawer"
-                aria-label="Open drawer"
-              >
-                <v-icon>mdi-chevron-right</v-icon>
-              </v-btn>
-
-              <!-- Bouton fermer (flèche gauche) quand drawer ouvert -->
-              <v-btn
-                icon
-                v-else
-                @click.stop="closeDrawer"
-                aria-label="Close drawer"
-              >
-                <v-icon>mdi-chevron-left</v-icon>
-              </v-btn>
-            </div>
-          </template>
-        </v-app-bar-nav-icon>
+      <v-app-bar color="primary" class="d-flex align-center">
+        <!-- Ne pas afficher le bouton toggle tant que isReady = false -->
+        <v-btn
+          v-if="isReady"
+          icon
+          variant="text"
+          @click.stop="drawer = !drawer"
+          aria-label="Toggle drawer"
+        >
+          <v-icon>{{ drawer ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
+        </v-btn>
 
         <v-toolbar-title>My files</v-toolbar-title>
 
@@ -38,7 +23,9 @@
         <v-btn icon="mdi-dots-vertical" variant="text" />
       </v-app-bar>
 
+      <!-- drawer affiché seulement si ready -->
       <v-navigation-drawer
+        v-if="isReady"
         v-model="drawer"
         location="start"
         temporary
@@ -56,12 +43,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useCookie } from '#app'
 
 const drawerCookie = useCookie('drawer-is-open', {
   default: () => false,
-  maxAge: 60 * 60 * 24 * 7, // 1 semaine
+  maxAge: 60 * 60 * 24 * 7,
 })
 
 const drawer = computed({
@@ -69,18 +56,17 @@ const drawer = computed({
   set: (val) => (drawerCookie.value = val),
 })
 
+const isReady = ref(false)
+onMounted(() => {
+  isReady.value = true
+})
+
 const items = [
   { title: 'Foo', value: 'foo' },
   { title: 'Bar', value: 'bar' },
 ]
 
-function openDrawer() {
-  drawer.value = true
-}
-
 function closeDrawer() {
   drawer.value = false
 }
 </script>
-
-
