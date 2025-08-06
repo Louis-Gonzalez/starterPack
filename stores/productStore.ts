@@ -7,7 +7,7 @@ export const useProductStore = defineStore('product', () => {
     id: null,
     name: null,
     price: null,
-    image: null,
+    img: null,
     brand : {
       id: null,
       name: null,

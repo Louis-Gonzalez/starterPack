@@ -90,7 +90,7 @@ export interface IProduct {
   id: number;
   name: string;
   price: number;
-  image: string;
+  img: string;
   brand : {
     id: number;
     name: string;
