@@ -85,3 +85,15 @@ export interface Customer {
   crypto: Crypto;
   role: string;
 }
+
+export interface IProduct {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  brand : {
+    id: number;
+    name: string;
+    img: string;
+  };
+}
