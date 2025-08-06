@@ -10,18 +10,27 @@
   const addName = () => {
     myProduct.value.name = "Tomato";
   }
+
   const addPrice = () => {
     myProduct.value.price = 1.52;
   }
+
   const addImg = () => {
     myProduct.value.img = "https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg";
   }
+
   const addNameBrand = () => {
     myProduct.value.brand.name = "Roma";
   }
+
   const addImgBrand = () => {
     myProduct.value.brand.img = "/img/logo-verger.jpg"
   }
+
+  const resetProduct = () => {
+    myProduct.value = productStore.clearProduct()
+  }
+
 </script>
 
 <template>
@@ -38,11 +47,17 @@
         <img :src="myProduct.brand.img" width="100" v-if="myProduct.brand.img" :alt="myProduct.name"/>
       </li>
     </ul>
-    <v-btn class="ma-2" @click="addName">Add name</v-btn>
-    <v-btn class="ma-2" @click="addPrice">Add price</v-btn>
-    <v-btn class="ma-2" @click="addImg">Add img</v-btn>
-    <v-btn class="ma-2" @click="addNameBrand">Add brand name</v-btn>
-    <v-btn class="ma-2" @click="addImgBrand">Add img brand</v-btn>
+    <div>
+      <v-btn class="ma-2" @click="addName">Add name</v-btn>
+      <v-btn class="ma-2" @click="addPrice">Add price</v-btn>
+      <v-btn class="ma-2" @click="addImg">Add img</v-btn>
+      <v-btn class="ma-2" @click="addNameBrand">Add brand name</v-btn>
+      <v-btn class="ma-2" @click="addImgBrand">Add img brand</v-btn>
+    </div>
+    <div>
+      <v-btn color="error" class="ma-2" @click="resetProduct">Reset Product</v-btn>
+    </div>
+
   </div>
 </template>
 

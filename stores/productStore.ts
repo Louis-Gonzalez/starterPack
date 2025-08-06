@@ -19,6 +19,7 @@ export const useProductStore = defineStore('product', () => {
 
   function clearProduct() {
     product.value = defaultProduct()
+    return product.value
   }
 
   return {
