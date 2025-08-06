@@ -20,14 +20,24 @@
     myProduct.value.brand.name = "Roma";
   }
   const addImgBrand = () => {
-    myProduct.value.brand.img = "~/assets/img/logo-verger.jgp"
+    myProduct.value.brand.img = "/img/logo-verger.jpg"
   }
 </script>
 
 <template>
   <div>
-    <h1>My product is :</h1>
-    <p>{{myProduct}}</p>
+    <h1>My product is:</h1>
+    <ul>
+      <li><strong>Name:</strong> {{ myProduct.name }}</li>
+      <li><strong>Price:</strong> {{ myProduct.price }}</li>
+      <li><strong>Image:</strong>
+        <img :src="myProduct.img" width="100" v-if="myProduct.img" :alt="myProduct.name"/>
+      </li>
+      <li><strong>Brand Name:</strong> {{ myProduct.brand.name }}</li>
+      <li><strong>Brand Img:</strong>
+        <img :src="myProduct.brand.img" width="100" v-if="myProduct.brand.img" :alt="myProduct.name"/>
+      </li>
+    </ul>
     <v-btn class="ma-2" @click="addName">Add name</v-btn>
     <v-btn class="ma-2" @click="addPrice">Add price</v-btn>
     <v-btn class="ma-2" @click="addImg">Add img</v-btn>

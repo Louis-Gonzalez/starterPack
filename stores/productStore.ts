@@ -15,10 +15,10 @@ export const useProductStore = defineStore('product', () => {
     }
   })
 
-  const product = ref([defaultProduct()])
+  const product = ref(defaultProduct())
 
   function clearProduct() {
-    product.value = [defaultProduct()]
+    product.value = defaultProduct()
   }
 
   return {
