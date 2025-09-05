@@ -2,59 +2,12 @@
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
+// TODO here replace by API call
 const weatherAroundWorld = {
-  paris: {
-    caracteristic: {
-      temperature: 60,
-      humidity: 60,
-      cloudiness: 60,
-    },
-    infos: {
-      nameOfCity: "Paris",
-      uvIndex: 5,
-      language: "French",
-      flag: "/flag/fr.png"
-    }
-  },
-  tokyo: {
-    caracteristic: {
-      temperature: 28,
-      humidity: 70,
-      cloudiness: 40,
-    },
-    infos: {
-      nameOfCity: "Tokyo",
-      uvIndex: 8,
-      language: "Japanese",
-      flag: "/flag/jp.png"
-    }
-  },
-  losAngeles: {
-    caracteristic: {
-      temperature: 25,
-      humidity: 50,
-      cloudiness: 20,
-    },
-    infos: {
-      nameOfCity: "Los Angeles",
-      uvIndex: 9,
-      language: "English",
-      flag: "/flag/us.png"
-    }
-  },
-  melbourne: {
-    caracteristic: {
-      temperature: 60,
-      humidity: 60,
-      cloudiness: 60,
-    },
-    infos: {
-      nameOfCity: "Melbourne",
-      uvIndex: 5,
-      language: "English",
-      flag: "/flag/au.png"
-    }
-  },
+  paris: { caracteristic: { temperature: 60, humidity: 60, cloudiness: 60 }, infos: { nameOfCity: "Paris", uvIndex: 5, language: "French", flag: "/flag/fr.png" } },
+  tokyo: { caracteristic: { temperature: 28, humidity: 70, cloudiness: 40 }, infos: { nameOfCity: "Tokyo", uvIndex: 8, language: "Japanese", flag: "/flag/jp.png" } },
+  losAngeles: { caracteristic: { temperature: 25, humidity: 50, cloudiness: 20 }, infos: { nameOfCity: "Los Angeles", uvIndex: 9, language: "English", flag: "/flag/us.png" } },
+  melbourne: { caracteristic: { temperature: 60, humidity: 60, cloudiness: 60 }, infos: { nameOfCity: "Melbourne", uvIndex: 5, language: "English", flag: "/flag/au.png" } },
 }
 
 const getLabel = (key: string) => {
@@ -69,11 +22,15 @@ const getLabel = (key: string) => {
   return mapping[key] || key
 }
 
-const units: Record<string, string> = {
-  temperature: "°C",
-  humidity: "%",
-  cloudiness: "%"
+const units: Record<string, string> = { temperature: "°C", humidity: "%", cloudiness: "%" }
+
+const icons: Record<string, string> = {
+  temperature: '/icons/temperature-solid-full.svg',
+  humidity: '/icons/droplet-solid-full.svg',
+  cloudiness: '/icons/cloud-solid-full.svg',
 }
+
+const uvIndex = '/icons/sun-solid-full.svg'
 </script>
 
 <template>
@@ -89,16 +46,16 @@ const units: Record<string, string> = {
       >
         <h2>{{ city.infos.nameOfCity }}</h2>
 
-        <div class="d-flex flex-wrap mini-card">
+        <div class="d-flex flex-wrap mini-card-container">
 
-          <v-card border class="mt-2 ma-4 pa-4">
-            <div v-for="(value, key) in city.caracteristic" :key="key">
-              <p>{{ t(getLabel(key)) }} : {{ value }}{{ units[key] || '' }}</p>
+          <v-card border class="mt-2 ma-2 pa-4 mini-card">
+            <div v-for="(value, key) in city.caracteristic" :key="key" class="d-flex align-center mb-2">
+              <img v-if="icons[key]" :src="icons[key]" alt="" class="icon-class mr-2"/>
+              <span>{{ t(getLabel(key)) }} : {{ value }}{{ units[key] || '' }}</span>
             </div>
           </v-card>
 
-
-          <v-card border class="mt-2 ma-4 pa-4">
+          <v-card border class="mt-2 ma-2 pa-4 mini-card">
             <div v-for="(value, key) in city.infos" :key="key">
               <div v-if="key === 'flag'">
                 <p class="d-flex align-center">
@@ -106,11 +63,18 @@ const units: Record<string, string> = {
                   <img :src="value" :alt="city.infos.nameOfCity + ' flag'" class="mx-2 flag-class"/>
                 </p>
               </div>
+              <div v-else-if="key === 'uvIndex'">
+                <p class="d-flex align-center">
+                  <img :src="uvIndex" alt="UV icon" class="icon-class mr-2"/>
+                  {{ t(getLabel(key)) }} : {{ value }}
+                </p>
+              </div>
               <div v-else>
                 <p>{{ t(getLabel(key)) }} : {{ value }}</p>
               </div>
             </div>
           </v-card>
+
 
         </div>
       </v-card>
@@ -120,12 +84,29 @@ const units: Record<string, string> = {
 
 <style scoped>
 .mini-card {
-  width: 20rem;
-  min-height: 10rem;
+  flex: 1;
+  min-width: 18rem;
+  max-width: 20rem;
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.flag-class{
+
+.flag-class {
   width: 5rem;
   height: 3rem;
   border: #121212 1px solid;
+}
+
+.icon-class {
+  width: 2rem;
+  height: 2rem;
+}
+
+.mini-card-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 </style>
