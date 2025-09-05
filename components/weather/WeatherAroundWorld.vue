@@ -6,6 +6,8 @@ const { t } = useI18n()
 // TODO here replace by API call
 // here i have move json in other file weather.ts and import on the top
 
+// TODO refacto class custom by vuetify class
+
 const getLabel = (key: string) => {
   const mapping: Record<string, string> = {
     temperature: 'weather.temperature',
