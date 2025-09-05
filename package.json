@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "check-i18n": "node scripts/check-i18n.js",
     "test": "vitest"
-},
+  },
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^1.2.0",
@@ -23,7 +23,8 @@
     "nuxt-svgo": "^4.0.17",
     "pinia": "^3.0.1",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue3-flag-icons": "^0.0.3"
   },
   "devDependencies": {
     "@testing-library/vue": "^8.1.0",
