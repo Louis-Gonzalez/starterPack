@@ -42,17 +42,17 @@ const weatherAroundWorld = {
       flag: "/flag/us.png"
     }
   },
-  paris2: {
+  melbourne: {
     caracteristic: {
       temperature: 60,
       humidity: 60,
       cloudiness: 60,
     },
     infos: {
-      nameOfCity: "Paris",
+      nameOfCity: "Melbourne",
       uvIndex: 5,
-      language: "French",
-      flag: "/flag/fr.png"
+      language: "Anglais",
+      flag: "/flag/au.png"
     }
   },
 }
