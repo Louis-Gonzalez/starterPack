@@ -51,7 +51,7 @@ const weatherAroundWorld = {
     infos: {
       nameOfCity: "Melbourne",
       uvIndex: 5,
-      language: "Anglais",
+      language: "English",
       flag: "/flag/au.png"
     }
   },
@@ -100,14 +100,18 @@ const units: Record<string, string> = {
 
           <v-card border class="mt-2 ma-4 pa-4">
             <div v-for="(value, key) in city.infos" :key="key">
-              <template v-if="key === 'flag'">
-                <p>{{ t(getLabel(key)) }} : <img :src="value" :alt="city.infos.nameOfCity + ' flag'" width="40" /></p>
-              </template>
-              <template v-else>
+              <div v-if="key === 'flag'">
+                <p class="d-flex align-center">
+                  {{ t(getLabel(key)) }} :
+                  <img :src="value" :alt="city.infos.nameOfCity + ' flag'" class="mx-2 flag-class"/>
+                </p>
+              </div>
+              <div v-else>
                 <p>{{ t(getLabel(key)) }} : {{ value }}</p>
-              </template>
+              </div>
             </div>
           </v-card>
+
         </div>
       </v-card>
     </div>
@@ -118,5 +122,10 @@ const units: Record<string, string> = {
 .mini-card {
   width: 20rem;
   min-height: 10rem;
+}
+.flag-class{
+  width: 5rem;
+  height: 3rem;
+  border: #121212 1px solid;
 }
 </style>
