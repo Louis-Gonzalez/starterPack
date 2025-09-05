@@ -1,6 +1,14 @@
 {
-  "home": "Homepage",
-  "login": "Acceso",
+  "home": "Inicio",
+  "login": "Iniciar sesión",
   "welcome": "Bienvenido",
-  "weather.title": "El tiempo en todo el mundo"
+  "weather": {
+    "title": "El tiempo en todo el mundo",
+    "temperature": "Temperatura",
+    "humidity": "Humedad",
+    "cloudiness": "Nubosidad",
+    "uvIndex": "Índice UV",
+    "language": "Idioma",
+    "flag": "Bandera"
+  }
 }

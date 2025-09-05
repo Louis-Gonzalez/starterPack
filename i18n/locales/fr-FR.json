@@ -1,6 +1,14 @@
 {
-  "home": "Pseage d'accueil",
+  "home": "Accueil",
   "login": "Connexion",
   "welcome": "Bienvenue",
-  "weather.title": "Météo dans le monde entier"
+  "weather": {
+    "title": "Météo dans le monde entier",
+    "temperature": "Température",
+    "humidity": "Humidité",
+    "cloudiness": "Couverture nuageuse",
+    "uvIndex": "Indice UV",
+    "language": "Langue",
+    "flag": "Drapeau"
+  }
 }

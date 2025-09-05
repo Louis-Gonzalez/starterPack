@@ -2,5 +2,13 @@
   "home": "Homepage",
   "login": "Login",
   "welcome": "Welcome",
-  "weather.title": "Weather around the world"
+  "weather":{
+    "title": "Weather around the world",
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "cloudiness": "Cloudiness",
+    "uvIndex": "Uv Index",
+    "language": "Language",
+    "flag": "Flag"
+  }
 }

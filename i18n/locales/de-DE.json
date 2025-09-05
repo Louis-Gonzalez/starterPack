@@ -1,7 +1,14 @@
 {
   "home": "Startseite",
-  "login": "Login",
+  "login": "Anmelden",
   "welcome": "Willkommen",
-  "weather.title": "Wetter auf der ganzen Welt"
-
+  "weather": {
+    "title": "Wetter auf der ganzen Welt",
+    "temperature": "Temperatur",
+    "humidity": "Luftfeuchtigkeit",
+    "cloudiness": "Bewölkung",
+    "uvIndex": "UV-Index",
+    "language": "Sprache",
+    "flag": "Flagge"
+  }
 }
