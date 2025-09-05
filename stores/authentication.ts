@@ -45,7 +45,7 @@ export const useUserStore = defineStore('user', () => {
     if (token.value) {
       try {
         const responseCustomer = await $fetch<Customer>(
-          'https://dummyjson.com/users/56'
+          'https://dummyjson.com/users/1' // 1 is admin or 56 is user
         );
         setUser(responseCustomer);
         setCurrentUser(responseCustomer);
