@@ -1,5 +1,5 @@
 // TODO here replace by API call
-export const weatherAroundWorld = {
+export const weatherData = {
   paris: {
     caracteristic: {
       temperature: 60,
@@ -7,7 +7,7 @@ export const weatherAroundWorld = {
       cloudiness: 60
     },
     infos: {
-      nameOfCity: "Paris",
+      // nameOfCity: "Paris", // for WeatherAroundWorld
       uvIndex: 5,
       language: "French",
       flag: "/flag/fr.png"
@@ -20,7 +20,7 @@ export const weatherAroundWorld = {
       cloudiness: 40
     },
     infos: {
-      nameOfCity: "Tokyo",
+      // nameOfCity: "Tokyo", // for WeatherAroundWorld
       uvIndex: 8,
       language: "Japanese",
       flag: "/flag/jp.png"
@@ -33,7 +33,7 @@ export const weatherAroundWorld = {
       cloudiness: 20
     },
     infos: {
-      nameOfCity: "Los Angeles",
+      // nameOfCity: "Los Angeles",// for WeatherAroundWorld
       uvIndex: 9,
       language: "English",
       flag: "/flag/us.png"
@@ -46,7 +46,7 @@ export const weatherAroundWorld = {
       cloudiness: 60
     },
     infos: {
-      nameOfCity: "Melbourne",
+      // nameOfCity: "Melbourne", // for WeatherAroundWorld
       uvIndex: 5,
       language: "English",
       flag: "/flag/au.png"
