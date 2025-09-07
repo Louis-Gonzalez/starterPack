@@ -69,7 +69,7 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
    height: 20rem;
  }
  .logo {
-   width: 3rem;
-   height: 3rem;
+   width: 1.5rem;
+   height: 1.5rem;
  }
 </style>
