@@ -87,7 +87,6 @@ export interface Customer {
 }
 
 export interface IMicroWeather {
-  id: number;
   srcIcon?: string;
   alt?: string;
   itemName: string;
