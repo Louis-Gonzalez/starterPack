@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { weatherData2 } from '~/components/weather/weatherData2';
 import { useI18n } from 'vue-i18n';
 import MicroWeather from '~/components/weather/MicroWeather.vue';
@@ -20,30 +19,32 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
 
 <template>
   <h1>{{ t('weather.title') }}</h1>
-  <v-card border class="ma-8 elevation-2 city-card" v-for="(city, index) in cityNames" :key="index">
-    <h2 class="ml-4">{{city}}</h2>
+  <div class="d-flex flex-wrap">
+    <v-card border class="ma-8 elevation-2 city-card" v-for="(city, index) in cityNames" :key="index">
+      <h2 class="ml-4">{{city}}</h2>
 
-    <div class="d-flex align-center ga-2 ma-2">
+      <div class="d-flex align-center ga-2 ma-2">
 
-      <v-card class="ma-2 pa-2 ga-2 elevation-2  first-card">
-        <img src="/favicon.ico" alt="" class="svg-class mr-2"/> Informations :
-        <div v-for="item in infosCitiesData[index]" :key="index">
-          <p class="my-4"><strong>{{t('weather.language')}} :</strong> {{item.language}}</p>
-          <p><strong>{{t('weather.flag')}} :</strong>
-            <img :src="item.srcFlag" :alt="t('item.country') + 'flag'" class="svg-class">
-          </p>
-        </div>
-      </v-card>
+        <v-card class="ma-2 pa-2 ga-2 elevation-2  first-card">
+          <img src="/favicon.ico" alt="" class="svg-class mr-2"/> Informations :
+          <div v-for="item in infosCitiesData[index]" :key="index">
+            <p class="my-4"><strong>{{t('weather.language')}} :</strong> {{item.language}}</p>
+            <p><strong>{{t('weather.flag')}} :</strong>
+              <img :src="item.srcFlag" :alt="t('item.country') + 'flag'" class="svg-class">
+            </p>
+          </div>
+        </v-card>
 
-      <v-card class="ma-2 pa-2 ga-2 elevation-2 second-card">
-        <MicroWeather
-          v-for="(item, i) in microItemsByCity[index]"
-          :key="i"
-          :item="item"
-        />
-      </v-card>
-    </div>
-  </v-card>
+        <v-card class="ma-2 pa-2 ga-2 elevation-2 second-card">
+          <MicroWeather
+            v-for="(item, i) in microItemsByCity[index]"
+            :key="i"
+            :item="item"
+          />
+        </v-card>
+      </div>
+    </v-card>
+  </div>
 </template>
 
 <style scoped>

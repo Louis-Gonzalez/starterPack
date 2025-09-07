@@ -63,7 +63,7 @@ const item = {
         </div>
       </div>
     </div>
-    <WeatherAroundWorld />
+<!--    <WeatherAroundWorld />-->
     <WeatherAroundWorld2>
       <MicroWeather :item="item"/>
     </WeatherAroundWorld2>
