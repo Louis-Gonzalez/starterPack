@@ -36,6 +36,7 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
         </v-card>
 
         <v-card class="ma-2 pa-2 ga-2 elevation-2 second-card">
+          <img src="/favicon.ico" alt="" class="svg-class mr-2"/> Caracteristics :
           <MicroWeather
             v-for="(item, i) in microItemsByCity[index]"
             :key="i"
