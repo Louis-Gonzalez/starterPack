@@ -11,15 +11,14 @@ const itemUnit = computed(() => props.item.itemUnit ?? "")
 
 <template>
   <div class="mt-2 ma-2 pa-2 mini-card">
-    <div class="d-flex align-center">
-      <!-- Icône à gauche -->
+    <div class="d-flex align-center ma-2">
       <img v-if="props.item.srcIcon" :src="props.item.srcIcon" :alt="props.item.alt" class="svg-class mr-2">
-
-      <!-- Texte à droite -->
-      <div class="d-flex flex-column justify-center">
-        <p class="item-name"><strong>{{ props.item.itemName }}</strong></p>
-        <p class="item-value">{{ props.item.itemValue }} {{ itemUnit }}</p>
-      </div>
+      <p class="item-name"><strong>{{ props.item.itemName }}</strong></p>
+      <p class="ml-2">
+        <span class="d-flex ga-2">
+          {{ props.item.itemValue }} {{ itemUnit }}
+        </span>
+      </p>
     </div>
   </div>
 </template>
@@ -31,19 +30,7 @@ const itemUnit = computed(() => props.item.itemUnit ?? "")
 }
 
 .mini-card {
-  width: 8rem;
+  width: auto;
   height: auto;
-  padding: 0.5rem;
-}
-
-.item-name {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.item-value {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #555;
 }
 </style>

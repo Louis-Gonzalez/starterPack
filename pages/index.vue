@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n';
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
+import MicroWeather from '~/components/weather/MicroWeather.vue';
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -22,6 +24,15 @@ const changeColor = () => {
   const randomIndex = Math.floor(Math.random() * colorSvg.length);
   currentColor.value = colorSvg[randomIndex];
 };
+
+const item = {
+  id: 12,
+  srcIcon:"/icons/sun-solid-full.svg",
+  atl: "UV index infos",
+  itemName: 'UV index',
+  itemValue: "8",
+  itemUnit:""
+}
 </script>
 
 <template>
@@ -53,6 +64,9 @@ const changeColor = () => {
       </div>
     </div>
     <WeatherAroundWorld />
+    <WeatherAroundWorld2>
+      <MicroWeather :item="item"/>
+    </WeatherAroundWorld2>
   </section>
 </template>
 

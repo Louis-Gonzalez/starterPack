@@ -52,8 +52,7 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
    height: 1.5rem;
  }
  .first-card, .second-card {
-   text-align: center;
-   width : 17rem;
-   height: 17rem;
+   width : 18rem;
+   height: 20rem;
  }
 </style>
