@@ -85,3 +85,11 @@ export interface Customer {
   crypto: Crypto;
   role: string;
 }
+
+export interface IMicroWeather {
+  id: number;
+  srcIcon: string;
+  itemName: string;
+  itemValue: string;
+  itemUnit: string;
+}
