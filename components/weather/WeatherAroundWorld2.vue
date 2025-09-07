@@ -4,8 +4,10 @@ import { useI18n } from 'vue-i18n';
 import MicroWeather from '~/components/weather/MicroWeather.vue';
 
 const { t } = useI18n();
-// here data
-console.log(weatherData2);
+// here see data come other file
+// console.log(weatherData2);
+
+
 
 const cityNames = Object.values(weatherData2[0]).map(city => city.infos.nameOfCity)
 
@@ -34,6 +36,7 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
           <div v-for="item in infosCitiesData[index]" :key="index" class="ma-2">
             <p class="my-4"><strong>{{t('weather.language')}} :</strong> {{item.language}}</p>
             <p><strong>{{t('weather.flag')}} :</strong>
+<!--               TODO Add translate keys for alt inside img tag-->
               <img :src="item.srcFlag" :alt="t('item.country') + 'flag'" class="svg-class">
             </p>
           </div>
