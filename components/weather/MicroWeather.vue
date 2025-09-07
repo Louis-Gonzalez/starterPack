@@ -1,20 +1,23 @@
 <script setup lang="ts">
   import type { IMicroWeather } from '~/types';
-  const props = defineProps({
+
+  const props = defineProps<{
     item: IMicroWeather
-  })
+  }>()
+
+  const itemUnit = computed(() => props.item.itemUnit ?? "")
 </script>
 
 <template>
   <v-card border class="mt-2 ma-2 pa-4 mini-card">
-<!--    <div v-for="(value, key) in city.caracteristic" :key="key" class="d-flex align-center mb-2">-->
-<!--      <img v-if="icons[key]" :src="icons[key]" alt="" class="icon-class mr-2"/>-->
-<!--      <span>{{ t(getLabel(key)) }} : {{ value }}{{ units[key] || '' }}</span>-->
-<!--    </div>-->
-    inside the card for information
+    <div class="d-flex align-center ma-2 pa-2">
+      <img v-if="props.item.srcIcon" :src="props.item.srcIcon" :alt="props.item.alt">
+      <div class="ma-2 pa-2">
+        <p>{{ props.item.itemName}} :</p>
+        <p>{{ props.item.itemValue }} {{itemUnit}}</p>
+      </div>
+    </div>
   </v-card>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
