@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { weatherAroundWorld } from '~/components/weather/weather';
+import { weatherData } from '~/components/weather/weatherData';
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 // TODO here replace by API call
-// here i have move json in other file weather.ts and import on the top
+// here i have move json in other file weatherData.ts and import on the top
 
 // TODO refacto class custom by vuetify class
 
@@ -37,7 +37,7 @@ const uvIndex = '/icons/sun-solid-full.svg'
 
     <div class="d-flex flex-wrap">
       <v-card
-        v-for="(city, cityKey) in weatherAroundWorld"
+        v-for="(city, cityKey) in weatherData"
         :key="cityKey"
         class="ma-4 pa-4"
         elevation="2"
