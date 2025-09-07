@@ -20,10 +20,10 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
 
 <template>
   <h1>{{ t('weather.title') }}</h1>
-  <v-card border class="ma-8 elevation-2" v-for="(city, index) in cityNames" :key="index">
+  <v-card border class="ma-8 elevation-2 city-card" v-for="(city, index) in cityNames" :key="index">
     <h2 class="ml-4">{{city}}</h2>
 
-    <div class="d-flex align-center ga-2">
+    <div class="d-flex align-center ga-2 ma-2">
 
       <v-card class="ma-2 pa-2 ga-2 elevation-2  first-card">
         <img src="/favicon.ico" alt="" class="svg-class mr-2"/> Informations :
@@ -47,6 +47,10 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
 </template>
 
 <style scoped>
+.city-card {
+  width: 40rem;
+  height: auto;
+}
  .svg-class {
    width : 3rem;
    height: 1.5rem;
