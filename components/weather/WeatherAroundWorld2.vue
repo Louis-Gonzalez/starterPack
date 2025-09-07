@@ -27,8 +27,11 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
       <div class="d-flex align-center ga-2 ma-2">
 
         <v-card class="ma-2 pa-2 ga-2 elevation-2  first-card">
-          <img src="/img/infos.jpg" alt="infos logo" class="logo mr-2"/> Informations :
-          <div v-for="item in infosCitiesData[index]" :key="index">
+          <div class="d-flex align-center ga-2 ma-2">
+            <img src="/img/infos.jpg" alt="infos logo" class="logo mr-2"/>
+            <p>Informations :</p>
+          </div>
+          <div v-for="item in infosCitiesData[index]" :key="index" class="ma-2">
             <p class="my-4"><strong>{{t('weather.language')}} :</strong> {{item.language}}</p>
             <p><strong>{{t('weather.flag')}} :</strong>
               <img :src="item.srcFlag" :alt="t('item.country') + 'flag'" class="svg-class">
@@ -37,7 +40,10 @@ const microItemsByCity = Object.values(weatherData2[0]).map(city =>
         </v-card>
 
         <v-card class="ma-2 pa-2 ga-2 elevation-2 second-card">
-          <img src="/img/params.png" alt="params logo" class="logo mr-2"/> Caracteristics :
+          <div class="d-flex align-center ga-2 ma-2">
+            <img src="/img/params.png" alt="params logo" class="logo mr-2"/>
+            <p>Caracteristics : </p>
+          </div>
           <MicroWeather
             v-for="(item, i) in microItemsByCity[index]"
             :key="i"
