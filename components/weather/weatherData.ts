@@ -7,7 +7,7 @@ export const weatherData = {
       cloudiness: 60
     },
     infos: {
-      // nameOfCity: "Paris", // for WeatherAroundWorld
+      nameOfCity: "Paris",
       uvIndex: 5,
       language: "French",
       flag: "/flag/fr.png"
@@ -20,7 +20,7 @@ export const weatherData = {
       cloudiness: 40
     },
     infos: {
-      // nameOfCity: "Tokyo", // for WeatherAroundWorld
+      nameOfCity: "Tokyo",
       uvIndex: 8,
       language: "Japanese",
       flag: "/flag/jp.png"
@@ -33,7 +33,7 @@ export const weatherData = {
       cloudiness: 20
     },
     infos: {
-      // nameOfCity: "Los Angeles",// for WeatherAroundWorld
+      nameOfCity: "Los Angeles",
       uvIndex: 9,
       language: "English",
       flag: "/flag/us.png"
@@ -46,7 +46,7 @@ export const weatherData = {
       cloudiness: 60
     },
     infos: {
-      // nameOfCity: "Melbourne", // for WeatherAroundWorld
+      nameOfCity: "Melbourne",
       uvIndex: 5,
       language: "English",
       flag: "/flag/au.png"
