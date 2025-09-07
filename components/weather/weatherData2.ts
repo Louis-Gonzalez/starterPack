@@ -1,10 +1,11 @@
 // TODO here replace by API call
-export const weatherData2 = {
+export const weatherData2 = [{
   paris: {
     infos: {
+      country: "France",
       nameOfCity: "Paris",
       language: "French",
-      flag: "/flag/fr.png"
+      srcFlag: "/flag/fr.png"
     },
     caracteristic: {
       temperature: {
@@ -39,9 +40,10 @@ export const weatherData2 = {
 
   tokyo: {
     infos: {
+      country: "Japan",
       nameOfCity: "Tokyo",
       language: "Japanese",
-      flag: "/flag/jp.png"
+      srcFlag: "/flag/jp.png"
     },
     caracteristic: {
       temperature: {
@@ -76,9 +78,10 @@ export const weatherData2 = {
 
   losAngeles: {
     infos: {
+      country: "America",
       nameOfCity: "Los Angeles",
       language: "English",
-      flag: "/flag/us.png"
+      srcFlag: "/flag/us.png"
     },
     caracteristic: {
       temperature: {
@@ -113,9 +116,10 @@ export const weatherData2 = {
 
   melbourne: {
     infos: {
+      country: "Australia",
       nameOfCity: "Melbourne",
       language: "English",
-      flag: "/flag/au.png"
+      srcFlag: "/flag/au.png"
     },
     caracteristic: {
       temperature: {
@@ -147,4 +151,4 @@ export const weatherData2 = {
       }
     }
   }
-}
+}]
