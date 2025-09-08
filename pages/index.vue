@@ -77,9 +77,9 @@ const componentMap: Record<'card' | 'picture', Component>  = {
 <!--  dynamic component test -->
   <section>
     <div>
-<!--      keep alive it is an option-->
+<!--      keep alive it is an option -->
 <!--      <keep-alive>-->
-<!--      <transition name="fade">-->
+<!--      <transition name="fade"  mode="out-in">-->
         <component :is="componentMap[displayMode]" :user="user" />
 <!--      </transition>-->
 
