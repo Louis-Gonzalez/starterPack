@@ -85,3 +85,9 @@ export interface Customer {
   crypto: Crypto;
   role: string;
 }
+
+export interface IFakeUser {
+  name: string;
+  email: string;
+  picture: string;
+}

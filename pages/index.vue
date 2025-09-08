@@ -4,6 +4,7 @@ import Microsoft from './../assets/icons/microsoft.svg';
 import { useI18n } from 'vue-i18n';
 import FakeUserCard from '~/components/sandbox/fake-user/FakeUserCard.vue';
 import FakeUserPicture from '~/components/sandbox/fake-user/FakeUserPicture.vue';
+import type { IFakeUser } from '~/types';
 
 const { t } = useI18n()
 const colorSvg = [
@@ -27,7 +28,7 @@ const changeColor = () => {
   currentColor.value = colorSvg[randomIndex];
 };
 
-const user = {
+const user:IFakeUser = {
   name: 'Alice',
   email: 'alice@example.com',
   picture: '/fake-user/alice.jpg',
@@ -35,7 +36,7 @@ const user = {
 
 const displayMode = ref<'card' | 'picture'>('card')
 
-const componentMap = {
+const componentMap: Record<'card' | 'picture', Component>  = {
   card: FakeUserCard,
   picture: FakeUserPicture
 }
@@ -74,7 +75,13 @@ const componentMap = {
 <!--  dynamic component test -->
   <section>
     <div>
-      <component :is="componentMap[displayMode]"  :user="user" />
+<!--      keep alive it is an option-->
+<!--      <keep-alive>-->
+<!--      <transition name="fade">-->
+        <component :is="componentMap[displayMode]" :user="user" />
+<!--      </transition>-->
+
+      <!--      </keep-alive>-->
     </div>
     <div class="d-flex justify-center align-center ma-3 pa-2 ga-2">
       <v-btn
@@ -105,4 +112,13 @@ svg {
   width: 4rem;
   height: 4rem;
 }
+/*
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+*/
+
 </style>
