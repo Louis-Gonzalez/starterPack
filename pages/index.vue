@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
+import { useI18n } from 'vue-i18n';
+import FakeUserCard from '~/components/sandbox/fake-user/FakeUserCard.vue';
+import FakeUserPicture from '~/components/sandbox/fake-user/FakeUserPicture.vue';
+
+const { t } = useI18n()
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -21,11 +26,24 @@ const changeColor = () => {
   const randomIndex = Math.floor(Math.random() * colorSvg.length);
   currentColor.value = colorSvg[randomIndex];
 };
+
+const user = {
+  name: 'Alice',
+  email: 'alice@example.com',
+  picture: '/fake-user/alice.jpg',
+}
+
+const displayMode = ref<'card' | 'picture'>('card')
+
+const componentMap = {
+  card: FakeUserCard,
+  picture: FakeUserPicture
+}
 </script>
 
 <template>
   <section>
-    <h1>{{ $t('home') }}</h1>
+    <h1>{{ t('home') }}</h1>
     <div>
       <h2>Welcome! This is the home page</h2>
       <p>
@@ -50,6 +68,30 @@ const changeColor = () => {
           <Microsoft />
         </div>
       </div>
+    </div>
+  </section>
+
+<!--  dynamic component test -->
+  <section>
+    <div>
+      <component :is="componentMap[displayMode]"  :user="user" />
+    </div>
+    <div class="d-flex justify-center align-center ma-3 pa-2 ga-2">
+      <v-btn
+        variant="outlined"
+        color="primary"
+        @click="displayMode = 'card'"
+      >
+        Show the user card
+      </v-btn>
+
+      <v-btn
+        variant="outlined"
+        color="info"
+        @click="displayMode = 'picture'"
+      >
+        Show the picture
+      </v-btn>
     </div>
   </section>
 </template>
