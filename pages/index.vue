@@ -4,6 +4,7 @@ import Microsoft from './../assets/icons/microsoft.svg';
 import { useI18n } from 'vue-i18n';
 import FakeUserCard from '~/components/sandbox/fake-user/FakeUserCard.vue';
 import FakeUserPicture from '~/components/sandbox/fake-user/FakeUserPicture.vue';
+
 import type { IFakeUser } from '~/types';
 
 const { t } = useI18n()
@@ -28,6 +29,7 @@ const changeColor = () => {
   currentColor.value = colorSvg[randomIndex];
 };
 
+// Dynamic component test with componentMap for script setup lang="ts"
 const user:IFakeUser = {
   name: 'Alice',
   email: 'alice@example.com',
@@ -101,6 +103,7 @@ const componentMap: Record<'card' | 'picture', Component>  = {
       </v-btn>
     </div>
   </section>
+
 </template>
 
 <style scoped>
