@@ -30,18 +30,13 @@ const changeColor = () => {
 };
 
 // Dynamic component test with componentMap for script setup lang="ts"
-const user:IFakeUser = {
+const user = {
   name: 'Alice',
   email: 'alice@example.com',
   picture: '/fake-user/alice.jpg',
 }
 
-const displayMode = ref<'card' | 'picture'>('card')
-
-const componentMap: Record<'card' | 'picture', Component>  = {
-  card: FakeUserCard,
-  picture: FakeUserPicture
-}
+const displayMode = ref<FakerUserCard | FakeUserCard>(FakeUserCard)
 </script>
 
 <template>
@@ -80,7 +75,7 @@ const componentMap: Record<'card' | 'picture', Component>  = {
 <!--      keep alive it is an option -->
 <!--      <keep-alive>-->
 <!--      <transition name="fade"  mode="out-in">-->
-        <component :is="componentMap[displayMode]" :user="user" />
+        <component :is=displayMode :data="user" />
 <!--      </transition>-->
 
       <!--      </keep-alive>-->
@@ -89,7 +84,7 @@ const componentMap: Record<'card' | 'picture', Component>  = {
       <v-btn
         variant="outlined"
         color="primary"
-        @click="displayMode = 'card'"
+        @click="displayMode = FakeUserCard"
       >
         Show the user card
       </v-btn>
@@ -97,7 +92,7 @@ const componentMap: Record<'card' | 'picture', Component>  = {
       <v-btn
         variant="outlined"
         color="info"
-        @click="displayMode = 'picture'"
+        @click="displayMode = FakeUserPicture"
       >
         Show the picture
       </v-btn>

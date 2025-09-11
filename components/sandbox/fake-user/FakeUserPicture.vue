@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  const props = defineProps<{ user: { name: string, picture: string } }>()
+  const props = defineProps<{ data: { name: string, picture: string } }>()
 </script>
 
 <template>
   <div class="d-flex justify-center align-center ma-3 pa-2 ga-2">
-    <img :src="props.user.picture" :alt="props.user.name" class="rounded-full img-class" />
+    <img :src="props.data.picture" :alt="props.data.name" class="rounded-full img-class" />
   </div>
 </template>
 
