@@ -4,8 +4,6 @@ const token = userStore.token;
 const user = userStore.user;
 
 ///// other notification ////////
-import { usePush } from 'notivue'
-const push = usePush()
 
 function sendClassic() {
   push.success('Hello from your first notification!')
