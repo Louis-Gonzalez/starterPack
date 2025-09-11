@@ -2,6 +2,26 @@
 const userStore = useUserStore();
 const token = userStore.token;
 const user = userStore.user;
+
+import { usePush } from 'notivue'
+const push = usePush()
+
+function sendClassic() {
+  push.success('Hello from your first notification!')
+}
+
+function sendSpecial() {
+  push.info({
+    title: 'Notification spéciale',
+    message: 'Clique pour ouvrir le dossier',
+    // n'importe quelles props : ici on met link + flag isSpecial
+    props: {
+      isSpecial: true,
+      link: 'https://example.com/details/123'
+    },
+    duration: 8000
+  })
+}
 </script>
 
 <template>
@@ -17,12 +37,14 @@ const user = userStore.user;
     </p>
   </section>
 
-
   <section>
-    <button @click="push.success('Hello from your first notification!')">
-      Push notification
-    </button>
+    <v-btn color="primary" @click="sendClassic">Notif classique</v-btn>
+    <v-btn color="secondary" @click="sendSpecial">Notif spéciale avec lien</v-btn>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.nv-special {
+  border-left: 4px solid #3b82f6; /* bleu */
+}
+</style>

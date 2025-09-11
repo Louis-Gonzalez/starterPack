@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {
+  Notivue,
+  Notification,
   lightTheme,
   pastelTheme,
   materialTheme,
@@ -30,17 +32,34 @@ onMounted(() => {
   <div>
     <NuxtLayout>
       <Navbar />
-        <NuxtLoadingIndicator />
+      <NuxtLoadingIndicator />
       <NuxtPage />
 
       <Notivue v-slot="item">
         <NotivueSwipe :item="item">
-          <Notification :item="item" :theme="pastelTheme" />
+          <!-- Si on a une prop 'isSpecial' ou 'link' on rend la notif spéciale -->
+          <template v-if="item.props?.isSpecial || item.props?.link">
+            <!-- Exemple simple : tu peux remplacer par <v-alert> ou ton composant Vuetify -->
+            <div class="nv-special rounded-lg p-4 shadow-md">
+              <p class="font-bold">{{ item.title }}</p>
+              <p>{{ item.message }}</p>
+              <a v-if="item.props?.link" :href="item.props.link" target="_blank" rel="noreferrer" class="nv-link underline">
+                Ouvrir le lien
+              </a>
+              <div class="mt-2">
+                <button @click="item.clear()">Fermer</button>
+              </div>
+            </div>
+          </template>
+
+          <!-- Sinon rendu par défaut (ton Notification existant) -->
+          <Notification v-else :item="item" :theme="pastelTheme" />
         </NotivueSwipe>
       </Notivue>
     </NuxtLayout>
   </div>
 </template>
+
 
 <style>
 :root {

@@ -66,7 +66,7 @@ const changeColor = () => {
       </div>
     </div>
   </section>
-  <section>
+  <section id="index">
     <button @click="push.success('Hello from your first notification!')">
       Push notification
     </button>
