@@ -3,6 +3,7 @@ const userStore = useUserStore();
 const token = userStore.token;
 const user = userStore.user;
 
+///// other notification ////////
 import { usePush } from 'notivue'
 const push = usePush()
 
@@ -17,7 +18,7 @@ function sendSpecial() {
     // n'importe quelles props : ici on met link + flag isSpecial
     props: {
       isSpecial: true,
-      link: 'https://example.com/details/123'
+      link: '/user/user'
     },
     duration: 8000
   })
