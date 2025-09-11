@@ -7,6 +7,17 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-svgo'
   ],
+  notivue: {
+    position: 'top-right',
+    // limit: 4,
+    enqueue: true,
+    // avoidDuplicates: true,
+    notifications: {
+      global: {
+        duration: 10000
+      }
+    }
+  },
   i18n: {
     lazy: true,
     langDir: 'locales/',

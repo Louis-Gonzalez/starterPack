@@ -21,6 +21,20 @@ const changeColor = () => {
   const randomIndex = Math.floor(Math.random() * colorSvg.length);
   currentColor.value = colorSvg[randomIndex];
 };
+
+// import { useNotivue } from 'notivue'
+//
+// const config = useNotivue()
+//
+// config.update({
+//   position: 'bottom-right',
+//   enqueue: true,
+//   notifications: {
+//     global: {
+//       duration: 10000
+//     }
+//   }
+// })
 </script>
 
 <template>
