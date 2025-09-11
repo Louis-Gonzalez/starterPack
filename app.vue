@@ -11,6 +11,7 @@ import {
 import Navbar from '~/components/common/Navbar.vue';
 import { onMounted, watchEffect } from 'vue';
 import { useTheme } from 'vuetify';
+import SpecialNotification from '~/components/common/SpecialNotification.vue';
 
 const theme = useTheme();
 
@@ -37,20 +38,27 @@ onMounted(() => {
 
       <Notivue v-slot="item">
         <NotivueSwipe :item="item">
+
           <!-- Si on a une prop 'isSpecial' ou 'link' on rend la notif spéciale -->
-          <template v-if="item.props?.isSpecial || item.props?.link">
-            <!-- Exemple simple : tu peux remplacer par <v-alert> ou ton composant Vuetify -->
-            <div class="nv-special rounded-lg p-4 shadow-md">
-              <p class="font-bold">{{ item.title }}</p>
-              <p>{{ item.message }}</p>
-              <a v-if="item.props?.link" :href="item.props.link" target="_blank" rel="noreferrer" class="nv-link underline">
-                Ouvrir le lien
-              </a>
-              <div class="mt-2">
-                <button @click="item.clear()">Fermer</button>
-              </div>
-            </div>
-          </template>
+<!--          <template v-if="item.props?.isSpecial || item.props?.link">-->
+<!--            &lt;!&ndash; Exemple simple : tu peux remplacer par <v-alert> ou ton composant Vuetify &ndash;&gt;-->
+<!--            <div class="nv-special rounded-lg p-4 shadow-md">-->
+<!--              <p class="font-bold">{{ item.title }}</p>-->
+<!--              <p>{{ item.message }}</p>-->
+<!--              <a v-if="item.props?.link" :href="item.props.link" target="_blank" rel="noreferrer" class="nv-link underline">-->
+<!--                Ouvrir le lien-->
+<!--              </a>-->
+<!--              <div class="mt-2">-->
+<!--                <button @click="item.clear()">Fermer</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </template>-->
+
+          <SpecialNotification
+            v-if="item.props?.isSpecial || item.props?.link"
+            :item="item"
+          />
+
 
           <!-- Sinon rendu par défaut (ton Notification existant) -->
           <Notification v-else :item="item" :theme="pastelTheme" />
