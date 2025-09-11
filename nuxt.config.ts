@@ -68,8 +68,7 @@ export default defineNuxtConfig({
     '@mdi/font/css/materialdesignicons.min.css',
     '@/assets/css/main.css',
     'notivue/notification.css',
-    'notivue/animations.css',
-    'notivue/notification-progress.css'
+    'notivue/animations.css'
   ],
   vite: {
     define: { 'process.env.DEBUG': false },
