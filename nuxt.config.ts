@@ -1,6 +1,12 @@
 import svgLoader from './vite/plugins/svgLoader';
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n', 'nuxt-svgo'],
+  modules: [
+    'notivue/nuxt',
+    '@nuxt/eslint',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    'nuxt-svgo'
+  ],
   i18n: {
     lazy: true,
     langDir: 'locales/',
@@ -50,6 +56,8 @@ export default defineNuxtConfig({
     'vuetify/styles',
     '@mdi/font/css/materialdesignicons.min.css',
     '@/assets/css/main.css',
+    'notivue/notification.css',
+    'notivue/animations.css'
   ],
   vite: {
     define: { 'process.env.DEBUG': false },

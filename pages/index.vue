@@ -52,6 +52,11 @@ const changeColor = () => {
       </div>
     </div>
   </section>
+  <section>
+    <button @click="push.success('Hello from your first notification!')">
+      Push notification
+    </button>
+  </section>
 </template>
 
 <style scoped>

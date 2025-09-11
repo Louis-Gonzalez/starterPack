@@ -23,8 +23,14 @@ onMounted(() => {
   <div>
     <NuxtLayout>
       <Navbar />
-      <NuxtLoadingIndicator />
+        <NuxtLoadingIndicator />
       <NuxtPage />
+
+      <Notivue v-slot="item">
+        <NotivueSwipe :item="item">
+          <Notification :item="item" />
+        </NotivueSwipe>
+      </Notivue>
     </NuxtLayout>
   </div>
 </template>

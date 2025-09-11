@@ -12,13 +12,14 @@
     "format": "prettier --write .",
     "check-i18n": "node scripts/check-i18n.js",
     "test": "vitest"
-},
+  },
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^1.2.0",
     "@nuxtjs/i18n": "^9.5.3",
     "@pinia/nuxt": "^0.10.1",
     "eslint": "^9.23.0",
+    "notivue": "^2.4.5",
     "nuxt": "^3.16.1",
     "nuxt-svgo": "^4.0.17",
     "pinia": "^3.0.1",
