@@ -51,6 +51,7 @@ export function useUserForm() {
     }
 
     console.log('Formulaire valide ✅');
+    // ici tu peux faire ton traitement des données call api etc ...
   };
 
   // 🌟 Rules Vuetify
