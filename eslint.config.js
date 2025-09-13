@@ -8,7 +8,7 @@ export default defineConfig({
   ignores: [
     'node_modules/',
     'dist/',
-    'test/',
+    'tests/',
     '**/*.spec.js',
     '.nuxt/',
     '**/*.mjs',
