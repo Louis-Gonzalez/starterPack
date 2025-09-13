@@ -1,5 +1,3 @@
-# Makefile
-
 # Commande par défaut
 test: format lint coverage
 
@@ -15,4 +13,3 @@ lint:
 coverage:
 	npx vitest run --coverage
 
-.PHONY: test format lint coverage
