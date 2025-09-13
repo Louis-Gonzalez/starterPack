@@ -19,3 +19,5 @@ export const hasNoNumber = (value: unknown): boolean => {
   const numberRegex = /\d/;
   return !numberRegex.test(value);
 };
+
+

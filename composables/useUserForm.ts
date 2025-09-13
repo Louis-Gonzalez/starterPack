@@ -1,10 +1,17 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import * as validators from '~/utils/validators';
 
 export function useUserForm() {
   const lastname = ref('');
   const firstname = ref('');
   const email = ref('');
+
+  const isRequiredColor = (field: Ref<string>) =>
+    computed(() => field.value.trim() === '' ? 'blue' : ''); // bleu si vide
+
+  const lastnameColor = isRequiredColor(lastname);
+  const firstnameColor = isRequiredColor(firstname);
+  const emailColor = isRequiredColor(email);
 
   // Fonction de validation globale
   const validate = (): { valid: boolean; errors: Record<string, string> } => {
@@ -46,13 +53,13 @@ export function useUserForm() {
       (v: string) => !!v || 'Le nom est obligatoire',
       (v: string) => validators.isString(v) || 'Doit être une chaîne',
       (v: string) => validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
-      (v: string) => validators.hasNoNumber(v) || 'Le nom ne doit pas contenir de chiffre', // <- nouvelle règle
+      (v: string) => validators.hasNoNumber(v) || 'Le nom ne doit pas contenir de chiffre',
     ],
     firstname: [
       (v: string) => !!v || 'Le prénom est obligatoire',
       (v: string) => validators.isString(v) || 'Doit être une chaîne',
       (v: string) => validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
-      (v: string) => validators.hasNoNumber(v) || 'Le prénom ne doit pas contenir de chiffre', // <- nouvelle règle
+      (v: string) => validators.hasNoNumber(v) || 'Le prénom ne doit pas contenir de chiffre',
     ],
     email: [
       (v: string) => !!v || 'L\'email est obligatoire',
@@ -66,6 +73,9 @@ export function useUserForm() {
     email,
     handleSubmit,
     validate,
-    rules
+    rules,
+    lastnameColor,
+    firstnameColor,
+    emailColor,
   };
 }

@@ -6,8 +6,16 @@ import { useUserForm } from '~/composables/useUserForm';
 
 const { t } = useI18n();
 
-const { lastname, firstname, email, handleSubmit, rules } = useUserForm();
-
+const {
+  lastname,
+  firstname,
+  email,
+  handleSubmit,
+  rules,
+  firstnameColor,
+  lastnameColor,
+  emailColor
+} = useUserForm();
 </script>
 
 <template>
@@ -37,6 +45,7 @@ const { lastname, firstname, email, handleSubmit, rules } = useUserForm();
           <v-col cols="4">
             <v-text-field
               v-model="lastname"
+              :color="lastnameColor"
               :label="t('lastname')"
               :rules="rules.lastname"
               variant="outlined"
@@ -45,6 +54,7 @@ const { lastname, firstname, email, handleSubmit, rules } = useUserForm();
           <v-col cols="4">
             <v-text-field
               v-model="firstname"
+              :color="firstnameColor"
               :label="t('firstname')"
               :rules="rules.firstname"
               variant="outlined"
@@ -53,6 +63,7 @@ const { lastname, firstname, email, handleSubmit, rules } = useUserForm();
           <v-col cols="4">
             <v-text-field
               v-model="email"
+              :color="emailColor"
               :label="t('email')"
               :rules="rules.email"
               variant="outlined"
