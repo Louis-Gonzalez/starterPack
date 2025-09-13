@@ -27,8 +27,7 @@ const changeColor = () => {
   currentColor.value = colorSvg[randomIndex];
 };
 
-/// counter composable
-const { count, increment, decrement, reset } = useCounter(5)
+
 </script>
 
 <template>
@@ -60,21 +59,9 @@ const { count, increment, decrement, reset } = useCounter(5)
       </div>
     </div>
   </section>
-  <div class="p-4">
-    <h2>Counter Section</h2>
-    <p>Current value : {{ count }}</p>
 
-    <div class="d-flex align-center ma-1 pa-2 ga-2">
-      <v-btn @click="increment">➕ 1</v-btn>
-      <v-btn @click="decrement">➖ 1</v-btn>
-      <v-btn @click="reset">🔄 Reset</v-btn>
-    </div>
-  </div>
-  <section id="counter-composable">
 
-  </section>
 </template>
-
 <style scoped>
 .home-svg {
   transition: fill 0.3s ease;
