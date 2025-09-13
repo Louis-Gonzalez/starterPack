@@ -3,7 +3,9 @@ import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
 import { ref } from 'vue';
 import { useCounter } from '~/composables/useCounter.js';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -31,7 +33,7 @@ const { count, increment, decrement, reset } = useCounter(5)
 
 <template>
   <section>
-    <h1>{{ $t('home') }}</h1>
+    <h1>{{ t('home') }}</h1>
     <div>
       <h2>Welcome! This is the home page</h2>
       <p>
