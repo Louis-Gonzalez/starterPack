@@ -6,7 +6,7 @@ export function useUserForm() {
   const firstname = ref('');
   const email = ref('');
 
-  // Fonction de validation qui renvoie true/false et un objet d'erreurs
+  // Fonction de validation globale
   const validate = (): { valid: boolean; errors: Record<string, string> } => {
     const errors: Record<string, string> = {};
 
@@ -23,7 +23,7 @@ export function useUserForm() {
     }
 
     return {
-      valid: Object.keys(errors).length === 0, // true si pas d'erreurs
+      valid: Object.keys(errors).length === 0,
       errors,
     };
   };
@@ -38,8 +38,34 @@ export function useUserForm() {
     }
 
     console.log('Formulaire valide ✅');
-    // ici tu peux appeler ton API ou faire ce que tu veux avec les données
   };
 
-  return { lastname, firstname, email, handleSubmit, validate };
+  // 🌟 Rules Vuetify
+  const rules = {
+    lastname: [
+      (v: string) => !!v || 'Le nom est obligatoire',
+      (v: string) => validators.isString(v) || 'Doit être une chaîne',
+      (v: string) => validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
+      (v: string) => validators.hasNoNumber(v) || 'Le nom ne doit pas contenir de chiffre', // <- nouvelle règle
+    ],
+    firstname: [
+      (v: string) => !!v || 'Le prénom est obligatoire',
+      (v: string) => validators.isString(v) || 'Doit être une chaîne',
+      (v: string) => validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
+      (v: string) => validators.hasNoNumber(v) || 'Le prénom ne doit pas contenir de chiffre', // <- nouvelle règle
+    ],
+    email: [
+      (v: string) => !!v || 'L\'email est obligatoire',
+      (v: string) => validators.isEmail(v) || 'Email invalide',
+    ],
+  };
+
+  return {
+    lastname,
+    firstname,
+    email,
+    handleSubmit,
+    validate,
+    rules
+  };
 }

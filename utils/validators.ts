@@ -13,3 +13,9 @@ export const isEmail = (value: unknown): boolean => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(value.trim());
 };
+
+export const hasNoNumber = (value: unknown): boolean => {
+  if (!isString(value) || isEmptyString(value)) return false;
+  const numberRegex = /\d/;
+  return !numberRegex.test(value);
+};
