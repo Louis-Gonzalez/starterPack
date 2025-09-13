@@ -1,20 +1,55 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useI18n} from 'vue-i18n';
 /// counter composable
-const { count, increment, decrement, reset } = useCounter(5);
+// const { count, increment, decrement, reset } = useCounter(5);
+
+const { t } = useI18n();
+const lastname = ref<string>('');
+const firstname = ref<string>('');
+const email = ref<string>('');
 </script>
 
 <template>
-  <section id="counter-composable">
-    <div class="p-4">
-      <h1>Counter Section</h1>
-      <p>Current value : {{ count }}</p>
+<!--  <section id="counter-composable">-->
+<!--    <div class="p-4">-->
+<!--      <h1>Counter Section</h1>-->
+<!--      <p>Current value : {{ count }}</p>-->
 
-      <div class="d-flex align-center ma-1 pa-2 ga-2">
-        <v-btn @click="increment">➕ 1</v-btn>
-        <v-btn @click="decrement">➖ 1</v-btn>
-        <v-btn @click="reset">🔄 Reset</v-btn>
-      </div>
-    </div>
+<!--      <div class="d-flex align-center ma-1 pa-2 ga-2">-->
+<!--        <v-btn @click="increment">➕ 1</v-btn>-->
+<!--        <v-btn @click="decrement">➖ 1</v-btn>-->
+<!--        <v-btn @click="reset">🔄 Reset</v-btn>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+  <section>
+    <v-form class="ma-4">
+      <v-row class="d-flex ma-2 align-center">
+        <v-col cols="4">
+          <v-text-field
+            v-model="lastname"
+            :label="t('lastname')"
+            variant="outlined"
+          />
+        </v-col>
+        <v-col cols="4">
+          <v-text-field
+            v-model="firstname"
+            :label="t('firstname')"
+            variant="outlined"
+          />
+        </v-col>
+        <v-col cols="4">
+          <v-text-field
+            v-model="email"
+            :label="t('email')"
+            variant="outlined"
+          />
+        </v-col>
+      </v-row>
+
+    </v-form>
   </section>
 </template>
 
