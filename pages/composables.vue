@@ -15,7 +15,7 @@ const {
   rules,
   firstnameColor,
   lastnameColor,
-  emailColor
+  emailColor,
 } = useUserForm();
 </script>
 
@@ -40,7 +40,6 @@ const {
   <!--  :rules="['required','notEmpty','string','longerThan6', 'email']"-->
   <section>
     <v-form class="ma-4" @submit.prevent="handleSubmit">
-
       <v-card border elevation="2" class="ma-2">
         <h1 class="text-center">{{ t('form_user_title') }}</h1>
         <v-row class="d-flex ma-2 align-center">
@@ -86,7 +85,9 @@ const {
         <v-row>
           <v-col class="d-flex align-center ga-2 justify-center mb-4">
             <v-btn color="error" outlined>{{ t('cancel') }}</v-btn>
-            <v-btn color="success" type="submit" outlined>{{ t('confirm') }}</v-btn>
+            <v-btn color="success" type="submit" outlined>{{
+              t('confirm')
+            }}</v-btn>
           </v-col>
         </v-row>
       </v-card>

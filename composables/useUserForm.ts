@@ -9,27 +9,34 @@ export function useUserForm() {
   const comment = ref<string>('');
 
   const isRequiredColor = (field: Ref<string>) =>
-    computed(() => field.value.trim() === '' ? 'blue' : ''); // bleu si required
+    computed(() => (field.value.trim() === '' ? 'blue' : '')); // bleu si required
 
   const lastnameColor = isRequiredColor(lastname);
   const firstnameColor = isRequiredColor(firstname);
   const emailColor = isRequiredColor(email);
   const commentColor = isRequiredColor(comment);
 
-
   const validate = (): { valid: boolean; errors: Record<string, string> } => {
     const errors: Record<string, string> = {};
 
-    if (!validators.isString(lastname.value) || validators.isEmptyString(lastname.value)) {
-      errors.lastname = 'Le nom est obligatoire et doit être une chaîne de caractères';
+    if (
+      !validators.isString(lastname.value) ||
+      validators.isEmptyString(lastname.value)
+    ) {
+      errors.lastname =
+        'Le nom est obligatoire et doit être une chaîne de caractères';
     }
 
-    if (!validators.isString(firstname.value) || validators.isEmptyString(firstname.value)) {
-      errors.firstname = 'Le prénom est obligatoire et doit être une chaîne de caractères';
+    if (
+      !validators.isString(firstname.value) ||
+      validators.isEmptyString(firstname.value)
+    ) {
+      errors.firstname =
+        'Le prénom est obligatoire et doit être une chaîne de caractères';
     }
 
     if (!validators.isEmail(email.value)) {
-      errors.email = 'L\'email est invalide';
+      errors.email = "L'email est invalide";
     }
 
     if (!validators.isNotInjectingSomething(comment.value)) {
@@ -44,7 +51,12 @@ export function useUserForm() {
 
   const handleSubmit = () => {
     const { valid, errors } = validate();
-    console.log('Form values:', { lastname: lastname.value, firstname: firstname.value, email: email.value, comment: comment.value });
+    console.log('Form values:', {
+      lastname: lastname.value,
+      firstname: firstname.value,
+      email: email.value,
+      comment: comment.value,
+    });
 
     if (!valid) {
       console.error('Erreurs de validation:', errors);
@@ -60,24 +72,37 @@ export function useUserForm() {
     lastname: [
       (v: string) => !!v || 'Le nom est obligatoire',
       (v: string) => validators.isString(v) || 'Doit être une chaîne',
-      (v: string) => validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
-      (v: string) => validators.hasNoNumber(v) || 'Le nom ne doit pas contenir de chiffre',
-      (v: string) => validators.isNotInjectingSomething(v) || 'Contient des caractères interdits',
+      (v: string) =>
+        validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
+      (v: string) =>
+        validators.hasNoNumber(v) || 'Le nom ne doit pas contenir de chiffre',
+      (v: string) =>
+        validators.isNotInjectingSomething(v) ||
+        'Contient des caractères interdits',
     ],
     firstname: [
       (v: string) => !!v || 'Le prénom est obligatoire',
       (v: string) => validators.isString(v) || 'Doit être une chaîne',
-      (v: string) => validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
-      (v: string) => validators.hasNoNumber(v) || 'Le prénom ne doit pas contenir de chiffre',
-      (v: string) => validators.isNotInjectingSomething(v) || 'Contient des caractères interdits',
+      (v: string) =>
+        validators.isLongerThan(v, 2) || 'Doit contenir au moins 3 caractères',
+      (v: string) =>
+        validators.hasNoNumber(v) ||
+        'Le prénom ne doit pas contenir de chiffre',
+      (v: string) =>
+        validators.isNotInjectingSomething(v) ||
+        'Contient des caractères interdits',
     ],
     email: [
-      (v: string) => !!v || 'L\'email est obligatoire',
+      (v: string) => !!v || "L'email est obligatoire",
       (v: string) => validators.isEmail(v) || 'Email invalide',
-      (v: string) => validators.isNotInjectingSomething(v) || 'Contient des caractères interdits',
+      (v: string) =>
+        validators.isNotInjectingSomething(v) ||
+        'Contient des caractères interdits',
     ],
     comment: [
-      (v: string) => validators.isNotInjectingSomething(v) || 'Le commentaire contient des caractères interdits',
+      (v: string) =>
+        validators.isNotInjectingSomething(v) ||
+        'Le commentaire contient des caractères interdits',
     ],
   };
 

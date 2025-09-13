@@ -31,10 +31,8 @@ export const sanitizeInput = (value: unknown): string => {
 export const isNotInjectingSomething = (value: unknown): boolean => {
   if (!isString(value)) return false;
   const forbiddenPatterns = [
-    /<script.*?>.*?<\/script>/gi,  // injection JS
+    /<script.*?>.*?<\/script>/gi, // injection JS
     /('|;|--|\/\*|\*\/|DROP|SELECT|INSERT|DELETE|UPDATE)/gi,
   ];
   return !forbiddenPatterns.some((pattern) => pattern.test(value));
 };
-
-
