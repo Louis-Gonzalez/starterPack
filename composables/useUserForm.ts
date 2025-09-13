@@ -1,6 +1,7 @@
 import { ref, computed, type Ref } from 'vue';
 import * as validators from '~/utils/validators';
 
+// TODO traduire les messages d'erreurs
 export function useUserForm() {
   const lastname = ref<string>('');
   const firstname = ref<string>('');
@@ -8,14 +9,14 @@ export function useUserForm() {
   const comment = ref<string>('');
 
   const isRequiredColor = (field: Ref<string>) =>
-    computed(() => field.value.trim() === '' ? 'blue' : ''); // bleu si vide
+    computed(() => field.value.trim() === '' ? 'blue' : ''); // bleu si required
 
   const lastnameColor = isRequiredColor(lastname);
   const firstnameColor = isRequiredColor(firstname);
   const emailColor = isRequiredColor(email);
-  const commentColor = isRequiredColor(comment); // 🌟 ajouté
+  const commentColor = isRequiredColor(comment);
 
-  // Fonction de validation globale
+
   const validate = (): { valid: boolean; errors: Record<string, string> } => {
     const errors: Record<string, string> = {};
 
