@@ -16,6 +16,10 @@ const routeList = [
     path: '/admin/admin',
   },
   {
+    name: 'SandBox',
+    path: '/sandbox',
+  },
+  {
     name: 'Login',
     path: '/authentication/login',
   },
