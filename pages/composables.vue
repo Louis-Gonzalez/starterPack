@@ -40,9 +40,9 @@ const {
   <!--  :rules="['required','notEmpty','string','longerThan6', 'email']"-->
   <section>
     <v-form class="ma-4" @submit.prevent="handleSubmit">
-      <h1 class="text-center">{{ t('form_user_title') }}</h1>
-      <v-card border elevation="2" class="ma-2">
 
+      <v-card border elevation="2" class="ma-2">
+        <h1 class="text-center">{{ t('form_user_title') }}</h1>
         <v-row class="d-flex ma-2 align-center">
           <v-col cols="4">
             <v-text-field
