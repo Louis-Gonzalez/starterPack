@@ -1,42 +1,45 @@
 import { ref } from 'vue';
+import * as validators from '~/utils/validators';
 
 export function useUserForm() {
+  const lastname = ref('');
+  const firstname = ref('');
+  const email = ref('');
 
+  // Fonction de validation qui renvoie true/false et un objet d'erreurs
+  const validate = (): { valid: boolean; errors: Record<string, string> } => {
+    const errors: Record<string, string> = {};
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-  const checkIsString = (word : unknown) => {
-    return typeof word === "string";
-  }
-
-  const checkIsEmptyString = (word : unknown) => {
-    if (checkIsString(word)) {
-      // couvrir les cas où il y a des espaces vide !
-      return !word.length
+    if (!validators.isString(lastname.value) || validators.isEmptyString(lastname.value)) {
+      errors.lastname = 'Le nom est obligatoire et doit être une chaîne de caractères';
     }
-  }
 
-  const checkIsEnoughLonger = (word: unknown, wordLength : number) => {
-    if (!checkIsEmptyString(word)) {
-      word.length >= wordLength
+    if (!validators.isString(firstname.value) || validators.isEmptyString(firstname.value)) {
+      errors.firstname = 'Le prénom est obligatoire et doit être une chaîne de caractères';
     }
-  }
 
-  const checkIsNumber = (word : unknown) => {
-    return typeof word === "number";
-  }
-
-  const checkIsEmail = (word : unknown) => {
-    if (checkIsEmptyString(word)) {
-      word.map.include(emailRegex)
+    if (!validators.isEmail(email.value)) {
+      errors.email = 'L\'email est invalide';
     }
-  }
 
-  return {
-    checkIsEmail,
-    checkIsString,
-    checkIsNumber,
-    checkIsEmptyString,
-    checkIsEnoughLonger
+    return {
+      valid: Object.keys(errors).length === 0, // true si pas d'erreurs
+      errors,
+    };
   };
+
+  const handleSubmit = () => {
+    const { valid, errors } = validate();
+    console.log('Form values:', { lastname: lastname.value, firstname: firstname.value, email: email.value });
+
+    if (!valid) {
+      console.error('Erreurs de validation:', errors);
+      return;
+    }
+
+    console.log('Formulaire valide ✅');
+    // ici tu peux appeler ton API ou faire ce que tu veux avec les données
+  };
+
+  return { lastname, firstname, email, handleSubmit, validate };
 }
