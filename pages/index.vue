@@ -57,7 +57,7 @@ const { count, increment, decrement, reset } = useCounter(5)
   </section>
   <div class="p-4">
     <h1>Counter Section</h1>
-    <p>Valeur actuelle : {{ count }}</p>
+    <p>Current value : {{ count }}</p>
 
     <div class="d-flex align-center ma-1 pa-2 ga-2">
       <v-btn @click="increment">➕ 1</v-btn>
