@@ -10,6 +10,7 @@ const {
   lastname,
   firstname,
   email,
+  comment,
   handleSubmit,
   rules,
   firstnameColor,
@@ -41,6 +42,7 @@ const {
     <v-form class="ma-4" @submit.prevent="handleSubmit">
       <h1 class="text-center">{{ t('form_user_title') }}</h1>
       <v-card border elevation="2" class="ma-2">
+
         <v-row class="d-flex ma-2 align-center">
           <v-col cols="4">
             <v-text-field
@@ -70,6 +72,17 @@ const {
             />
           </v-col>
         </v-row>
+        <v-row class="d-flex ma-2 align-center">
+          <v-col cols="4">
+            <v-text-field
+              v-model="comment"
+              :label="t('comment')"
+              :rules="rules.comment"
+              variant="outlined"
+            />
+          </v-col>
+        </v-row>
+
         <v-row>
           <v-col class="d-flex align-center ga-2 justify-center mb-4">
             <v-btn color="error" outlined>{{ t('cancel') }}</v-btn>

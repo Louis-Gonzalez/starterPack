@@ -20,4 +20,21 @@ export const hasNoNumber = (value: unknown): boolean => {
   return !numberRegex.test(value);
 };
 
+export const sanitizeInput = (value: unknown): string => {
+  if (!isString(value)) return '';
+  return value
+    .trim()
+    .replace(/\s+/g, ' ')
+    .replace(/[\u200B-\u200D\uFEFF]/g, ''); // caractères invisibles unicode
+};
+
+export const isNotInjectingSomething = (value: unknown): boolean => {
+  if (!isString(value)) return false;
+  const forbiddenPatterns = [
+    /<script.*?>.*?<\/script>/gi,  // injection JS
+    /('|;|--|\/\*|\*\/|DROP|SELECT|INSERT|DELETE|UPDATE)/gi,
+  ];
+  return !forbiddenPatterns.some((pattern) => pattern.test(value));
+};
+
 
