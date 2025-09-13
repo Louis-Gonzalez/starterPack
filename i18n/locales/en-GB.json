@@ -1,5 +1,11 @@
 {
   "home": "Homepage",
   "login": "Login",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "lastname": "Lastname",
+  "firstname": "Firstname",
+  "email": "Email",
+  "form_user_title": "Form user"
 }

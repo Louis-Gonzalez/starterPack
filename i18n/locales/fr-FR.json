@@ -1,5 +1,11 @@
 {
-  "home": "Pseage d'accueil",
+  "home": "Accueil",
   "login": "Connexion",
-  "welcome": "Bienvenue"
+  "welcome": "Bienvenue",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "lastname": "Nom",
+  "firstname": "Prénom",
+  "email": "Email",
+  "form_user_title": "Formulaire utilisateur"
 }
