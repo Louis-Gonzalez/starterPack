@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
+import { ref } from 'vue';
+import { useCounter } from '~/composables/useCounter.js';
+
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -56,7 +59,7 @@ const { count, increment, decrement, reset } = useCounter(5)
     </div>
   </section>
   <div class="p-4">
-    <h1>Counter Section</h1>
+    <h2>Counter Section</h2>
     <p>Current value : {{ count }}</p>
 
     <div class="d-flex align-center ma-1 pa-2 ga-2">
