@@ -8,10 +8,12 @@ const localesDir = path.join(process.cwd(), 'i18n/locales');
 const rl = readline.createInterface({ input, output });
 
 function sortObject(obj) {
-  return Object.keys(obj).sort().reduce((acc, key) => {
-    acc[key] = obj[key];
-    return acc;
-  }, {});
+  return Object.keys(obj)
+    .sort()
+    .reduce((acc, key) => {
+      acc[key] = obj[key];
+      return acc;
+    }, {});
 }
 
 function formatJsonWithCorrectCommas(obj) {
@@ -30,9 +32,13 @@ function formatJsonWithCorrectCommas(obj) {
 async function askValidLine(line, filename, lineNumber) {
   const regex = /^\s*"(.+?)"\s*:\s*"(.*)"\s*,?\s*$/;
   while (!regex.test(line.trim())) {
-    console.log(`\n❌ Ligne mal formée dans ${filename} (ligne ${lineNumber}):`);
+    console.log(
+      `\n❌ Ligne mal formée dans ${filename} (ligne ${lineNumber}):`
+    );
     console.log(`> ${line}`);
-    line = await rl.question('Corrige cette ligne (format attendu: "key": "value") : ');
+    line = await rl.question(
+      'Corrige cette ligne (format attendu: "key": "value") : '
+    );
   }
   return line;
 }
@@ -72,24 +78,38 @@ async function processFile(filepath, globalKeySet) {
 
   const finalObj = {};
   for (const [key, values] of Object.entries(allValuesPerKey)) {
-    const uniqueValues = [...new Set(values.map(v => JSON.stringify(v)))].map(v => JSON.parse(v));
+    const uniqueValues = [...new Set(values.map((v) => JSON.stringify(v)))].map(
+      (v) => JSON.parse(v)
+    );
 
     if (uniqueValues.length === 1) {
       finalObj[key] = uniqueValues[0];
     } else {
-      console.log(`\n⚠️ Clé "${key}" trouvée plusieurs fois avec des valeurs différentes :`);
+      console.log(
+        `\n⚠️ Clé "${key}" trouvée plusieurs fois avec des valeurs différentes :`
+      );
       uniqueValues.forEach((val, idx) => {
         console.log(`  ${idx + 1}. ${JSON.stringify(val)}`);
       });
-      let choice = await rl.question(`Quelle valeur veux-tu conserver pour "${key}" ? (1-${uniqueValues.length}, m = manuel, s = sauter) : `);
-      while (!['s', 'm', ...uniqueValues.map((_, i) => (i + 1).toString())].includes(choice)) {
-        choice = await rl.question(`Choix invalide. Recommence (1-${uniqueValues.length}, m, s): `);
+      let choice = await rl.question(
+        `Quelle valeur veux-tu conserver pour "${key}" ? (1-${uniqueValues.length}, m = manuel, s = sauter) : `
+      );
+      while (
+        !['s', 'm', ...uniqueValues.map((_, i) => (i + 1).toString())].includes(
+          choice
+        )
+      ) {
+        choice = await rl.question(
+          `Choix invalide. Recommence (1-${uniqueValues.length}, m, s): `
+        );
       }
 
       if (choice === 's') {
         finalObj[key] = uniqueValues[uniqueValues.length - 1];
       } else if (choice === 'm') {
-        const manual = await rl.question(`Entre la valeur manuelle pour "${key}" : `);
+        const manual = await rl.question(
+          `Entre la valeur manuelle pour "${key}" : `
+        );
         try {
           finalObj[key] = JSON.parse(manual);
         } catch {
@@ -109,7 +129,7 @@ async function processFile(filepath, globalKeySet) {
 }
 
 async function main() {
-  const files = fs.readdirSync(localesDir).filter(f => f.endsWith('.json'));
+  const files = fs.readdirSync(localesDir).filter((f) => f.endsWith('.json'));
   const globalKeySet = new Set();
   const allKeysByFile = {};
 
@@ -117,21 +137,25 @@ async function main() {
     const filepath = path.join(localesDir, file);
     const keys = await processFile(filepath, globalKeySet);
     allKeysByFile[file] = new Set(keys);
-    keys.forEach(k => globalKeySet.add(k));
+    keys.forEach((k) => globalKeySet.add(k));
   }
 
   let hasMissing = false;
   for (const [file, keySet] of Object.entries(allKeysByFile)) {
-    const missing = [...globalKeySet].filter(k => !keySet.has(k));
+    const missing = [...globalKeySet].filter((k) => !keySet.has(k));
     if (missing.length) {
       hasMissing = true;
       console.log(`\n📂 Fichier : ${file}`);
-      console.log(`  ❌ Clés manquantes (${missing.length}) : ${missing.join(', ')}`);
+      console.log(
+        `  ❌ Clés manquantes (${missing.length}) : ${missing.join(', ')}`
+      );
     }
   }
 
   if (!hasMissing) {
-    console.log('\n✅ Tous les fichiers sont valides, triés, sans doublons et complets ✅');
+    console.log(
+      '\n✅ Tous les fichiers sont valides, triés, sans doublons et complets ✅'
+    );
   }
 
   rl.close();

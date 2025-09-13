@@ -41,8 +41,8 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.js',
     experimental: {
       bundle: {
-        optimizeTranslationDirective: false
-      }
+        optimizeTranslationDirective: false,
+      },
     },
   },
   compatibilityDate: '2024-11-01',

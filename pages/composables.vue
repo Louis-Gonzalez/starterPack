@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /// counter composable
-const { count, increment, decrement, reset } = useCounter(5)
+const { count, increment, decrement, reset } = useCounter(5);
 </script>
 
 <template>
@@ -18,6 +18,4 @@ const { count, increment, decrement, reset } = useCounter(5)
   </section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

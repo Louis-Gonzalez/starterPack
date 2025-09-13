@@ -2,7 +2,6 @@
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
 import { ref } from 'vue';
-import { useCounter } from '~/composables/useCounter.js';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -26,8 +25,6 @@ const changeColor = () => {
   const randomIndex = Math.floor(Math.random() * colorSvg.length);
   currentColor.value = colorSvg[randomIndex];
 };
-
-
 </script>
 
 <template>
@@ -59,8 +56,6 @@ const changeColor = () => {
       </div>
     </div>
   </section>
-
-
 </template>
 <style scoped>
 .home-svg {

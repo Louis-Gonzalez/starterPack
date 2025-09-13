@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { sortObject, formatJsonWithCorrectCommas } from '../../scripts/i18nUtils.js';
+import {
+  sortObject,
+  formatJsonWithCorrectCommas,
+} from '../../scripts/i18nUtils.js';
 
 describe('sortObject', () => {
   it('should sort object keys alphabetically', () => {
@@ -10,7 +13,7 @@ describe('sortObject', () => {
 
 describe('formatJsonWithCorrectCommas', () => {
   it('should format JSON string with proper commas', () => {
-    const obj = { a: "x", b: "y" };
+    const obj = { a: 'x', b: 'y' };
     const expected = `{
   "a": "x",
   "b": "y"

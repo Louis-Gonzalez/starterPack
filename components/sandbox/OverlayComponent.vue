@@ -1,51 +1,50 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watch } from 'vue';
 
 const props = defineProps({
   title: String,
   isOpen: Boolean,
   nb: Number,
-})
-const emit = defineEmits(['cancel'])
+});
+const emit = defineEmits(['cancel']);
 
-const localOpen = ref(props.isOpen ?? false)
+const localOpen = ref(props.isOpen ?? false);
 
-watch(() => props.isOpen, (val) => {
-  if (localOpen.value !== val) {
-    localOpen.value = val
+watch(
+  () => props.isOpen,
+  (val) => {
+    if (localOpen.value !== val) {
+      localOpen.value = val;
+    }
   }
-})
+);
 
 watch(localOpen, (val) => {
   if (!val && props.isOpen) {
-    emit('cancel')
+    emit('cancel');
   }
-})
+});
 
 const close = () => {
-  localOpen.value = false
-}
+  localOpen.value = false;
+};
 
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
-    close()
+    close();
   }
-}
+};
 
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
-})
+  window.addEventListener('keydown', handleKeydown);
+});
 onBeforeUnmount(() => {
-  window.removeEventListener('keydown', handleKeydown)
-})
+  window.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
 <template>
-  <v-overlay
-    v-model="localOpen"
-    scrim="transparent"
-    class="custom-overlay"
-  >
+  <v-overlay v-model="localOpen" scrim="transparent" class="custom-overlay">
     <v-sheet class="drawer-content">
       <div class="title-modal">
         <h3>{{ props.title ?? 'Titre manquant' }}</h3>

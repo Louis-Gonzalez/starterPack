@@ -1,8 +1,10 @@
 export function sortObject(obj) {
-  return Object.keys(obj).sort().reduce((acc, key) => {
-    acc[key] = obj[key];
-    return acc;
-  }, {});
+  return Object.keys(obj)
+    .sort()
+    .reduce((acc, key) => {
+      acc[key] = obj[key];
+      return acc;
+    }, {});
 }
 
 export function formatJsonWithCorrectCommas(obj) {

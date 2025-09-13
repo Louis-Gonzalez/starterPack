@@ -12,6 +12,6 @@ export default defineConfig({
     '**/*.spec.js',
     '.nuxt/',
     '**/*.mjs',
-    'scripts/check-i18n.js'
+    'scripts/check-i18n.js',
   ],
 });

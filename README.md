@@ -48,7 +48,7 @@ link to dependence: (https://nuxt.com/modules?q=i18n) and link to documentation 
 
 ### Special Script: check-i18n
 
-My check-i18n script is designed to keep translation files functional and make multilingual application development easier. 
+My check-i18n script is designed to keep translation files functional and make multilingual application development easier.
 During merges, conflicts are common, and this tool will hopefully help you a lot.
 
 ✅ Interactive correction of incorrect lines
@@ -75,3 +75,4 @@ import MyIcon from '~/assets/icons/my-icon.svg';
 <template>
   <MyIcon />
 </template>
+```

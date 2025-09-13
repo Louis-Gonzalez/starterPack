@@ -8,11 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "format": "prettier --write .",
     "check-i18n": "node scripts/check-i18n.js",
-    "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "test": "vitest"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
