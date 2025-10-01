@@ -21,6 +21,6 @@ const toggleText = () => {
     Click Me
   </v-btn>
 
-  <p v-if="isTextVisible">This is a text !  or not ! </p>
+  <p v-if="isTextVisible">This is a text ! or not ! </p>
 </template>
 
