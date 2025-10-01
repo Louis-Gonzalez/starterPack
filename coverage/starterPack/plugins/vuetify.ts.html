@@ -169,46 +169,46 @@
 <span class="cstat-no" title="statement not covered" >import colors from 'vuetify/util/colors';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export default defineNuxtPlugin((nuxt) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const vuetify = createVuetify({</span>
-<span class="cstat-no" title="statement not covered" >    ssr: true,</span>
-<span class="cstat-no" title="statement not covered" >    components,</span>
-<span class="cstat-no" title="statement not covered" >    directives,</span>
-<span class="cstat-no" title="statement not covered" >    theme: {</span>
-<span class="cstat-no" title="statement not covered" >      defaultTheme: 'light',</span>
-<span class="cstat-no" title="statement not covered" >      themes: {</span>
-<span class="cstat-no" title="statement not covered" >        light: {</span>
-<span class="cstat-no" title="statement not covered" >          colors: {</span>
-<span class="cstat-no" title="statement not covered" >            primary: '#E53935',</span>
-<span class="cstat-no" title="statement not covered" >            secondary: '#FFCDD2',</span>
-<span class="cstat-no" title="statement not covered" >            success: '#4CAF50',</span>
-<span class="cstat-no" title="statement not covered" >            info: '#2196F3',</span>
-<span class="cstat-no" title="statement not covered" >            warning: '#FB8C00',</span>
-<span class="cstat-no" title="statement not covered" >            error: '#FF5252',</span>
-<span class="cstat-no" title="statement not covered" >            color1: '#9C27B0',</span>
-<span class="cstat-no" title="statement not covered" >            color2: '#FFEB3B',</span>
-<span class="cstat-no" title="statement not covered" >            color3: '#121212',</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
+<span class="cstat-no" title="statement not covered" >    const vuetify = createVuetify({</span>
+<span class="cstat-no" title="statement not covered" >        ssr: true,</span>
+<span class="cstat-no" title="statement not covered" >        components,</span>
+<span class="cstat-no" title="statement not covered" >        directives,</span>
+<span class="cstat-no" title="statement not covered" >        theme: {</span>
+<span class="cstat-no" title="statement not covered" >            defaultTheme: 'light',</span>
+<span class="cstat-no" title="statement not covered" >            themes: {</span>
+<span class="cstat-no" title="statement not covered" >                light: {</span>
+<span class="cstat-no" title="statement not covered" >                    colors: {</span>
+<span class="cstat-no" title="statement not covered" >                        primary: '#E53935',</span>
+<span class="cstat-no" title="statement not covered" >                        secondary: '#FFCDD2',</span>
+<span class="cstat-no" title="statement not covered" >                        success: '#4CAF50',</span>
+<span class="cstat-no" title="statement not covered" >                        info: '#2196F3',</span>
+<span class="cstat-no" title="statement not covered" >                        warning: '#FB8C00',</span>
+<span class="cstat-no" title="statement not covered" >                        error: '#FF5252',</span>
+<span class="cstat-no" title="statement not covered" >                        custom1: '#9C27B0',</span>
+<span class="cstat-no" title="statement not covered" >                        custom2: '#FFEB3B',</span>
+<span class="cstat-no" title="statement not covered" >                        custom3: '#795548',</span>
+<span class="cstat-no" title="statement not covered" >                    },</span>
+<span class="cstat-no" title="statement not covered" >                },</span>
+<span class="cstat-no" title="statement not covered" >                dark: {</span>
+<span class="cstat-no" title="statement not covered" >                    colors: {</span>
+<span class="cstat-no" title="statement not covered" >                        primary: '#FFCDD2',</span>
+<span class="cstat-no" title="statement not covered" >                        secondary: '#E53935',</span>
+<span class="cstat-no" title="statement not covered" >                        success: '#81C784',</span>
+<span class="cstat-no" title="statement not covered" >                        info: '#64B5F6',</span>
+<span class="cstat-no" title="statement not covered" >                        warning: '#FFB74D',</span>
+<span class="cstat-no" title="statement not covered" >                        error: '#E57373',</span>
+<span class="cstat-no" title="statement not covered" >                        custom1: '#CE93D8',</span>
+<span class="cstat-no" title="statement not covered" >                        custom2: '#FFF176',</span>
+<span class="cstat-no" title="statement not covered" >                        custom3: '#A1887F',</span>
+<span class="cstat-no" title="statement not covered" >                        background: '#121212',</span>
+<span class="cstat-no" title="statement not covered" >                        text: '#FFFFFF',</span>
+<span class="cstat-no" title="statement not covered" >                    },</span>
+<span class="cstat-no" title="statement not covered" >                },</span>
+<span class="cstat-no" title="statement not covered" >            },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >        dark: {</span>
-<span class="cstat-no" title="statement not covered" >          colors: {</span>
-<span class="cstat-no" title="statement not covered" >            primary: '#FFCDD2',</span>
-<span class="cstat-no" title="statement not covered" >            secondary: '#E53935',</span>
-<span class="cstat-no" title="statement not covered" >            success: '#81C784',</span>
-<span class="cstat-no" title="statement not covered" >            info: '#64B5F6',</span>
-<span class="cstat-no" title="statement not covered" >            warning: '#FFB74D',</span>
-<span class="cstat-no" title="statement not covered" >            error: '#E57373',</span>
-<span class="cstat-no" title="statement not covered" >            color1: '#CE93D8',</span>
-<span class="cstat-no" title="statement not covered" >            color2: '#FFF176',</span>
-<span class="cstat-no" title="statement not covered" >            color3: '#868686',</span>
-<span class="cstat-no" title="statement not covered" >            background: '#121212',</span>
-<span class="cstat-no" title="statement not covered" >            text: '#FFFFFF',</span>
-<span class="cstat-no" title="statement not covered" >          },</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  nuxt.vueApp.use(vuetify);</span>
+<span class="cstat-no" title="statement not covered" >    nuxt.vueApp.use(vuetify);</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;</pre></td></tr></table></pre>
 
@@ -217,7 +217,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-13T13:56:45.100Z
+                at 2025-10-01T19:48:56.315Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
