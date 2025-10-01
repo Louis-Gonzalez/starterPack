@@ -17,7 +17,6 @@ export default defineConfig({
     alias: {
       '\\.css$': path.resolve(__dirname, 'tests/__mocks__/styleMock.js'),
     },
-
     deps: {
       inline: ['vuetify'], // important pour compiler Vuetify correctement
     },
