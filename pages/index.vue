@@ -52,6 +52,64 @@ const changeColor = () => {
       </div>
     </div>
   </section>
+  <section>
+    <div>
+      <p>
+        <v-icon icon="mdi-home" /> // mdi est construit par defaut on n'est pas obligé de prefix dans l'attibut
+        <v-icon icon="mdi:mdi-plus" />
+        <v-icon icon="mdi-account" />
+        <v-icon icon="fa:fa-solid fa-house" />
+        <v-icon icon="fa:fa-solid fa-face-smile"/>
+        <v-icon icon="fa:fa-brands fa-github" />
+      </p>
+      <p class="d-flex flex-wrap ga-2 coloring-icon">
+        <v-icon icon="fa:fa-solid fa-server" />
+
+        <v-icon icon="fa:fa-regular fa-square-check" />
+        <v-icon icon="fa:fa-solid fa-square-check" />
+
+        <v-icon icon="fa:fa-solid fa-clipboard-list" />
+
+        <v-icon icon="fa:fa-solid fa-gear" />
+
+        <v-icon icon="fa:fa-solid fa-trash" />
+
+        <v-icon icon="fa:fa-regular fa-edit" />
+        <v-icon icon="fa:fa-solid fa-edit" />
+
+        <v-icon icon="fa:fa-regular fa-eye" />
+        <v-icon icon="fa:fa-solid fa-eye" />
+
+        <v-icon icon="fa:fa-solid fa-user" />
+        <v-icon icon="fa:fa-regular fa-user" />
+
+        <v-icon icon="fa:fa-solid fa-chevron-right" />
+        <v-icon icon="fa:fa-solid fa-chevron-left" />
+        <v-icon icon="fa:fa-solid fa-chevron-down" />
+        <v-icon icon="fa:fa-solid fa-chevron-up" />
+
+        <v-icon icon="fa:fa-regular fa-plus"  />
+        <v-icon icon="fa:fa-solid fa-plus"  />
+
+        <v-icon icon="fa:fa-regular fa-bell" />
+        <v-icon icon="fa:fa-solid fa-bell" />
+
+        <v-icon icon="fa:fa-regular fa-sun" />
+        <v-icon icon="fa:fa-solid fa-sun" />
+
+        <v-icon icon="fa:fa-regular fa-moon" />
+        <v-icon icon="fa:fa-solid fa-moon" />
+
+        <v-icon icon="fa:fa-solid fa-power-off" />
+
+        <v-icon icon="fa:fa-regular fa-circle-check" />
+        <v-icon icon="fa:fa-solid fa-circle-check" />
+
+        <v-icon icon="fa:fa-solid fa-arrow-rotate-left"/>
+        <v-icon icon="fa:fa-solid fa-arrow-rotate-right"/>
+      </p>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -62,5 +120,8 @@ const changeColor = () => {
 svg {
   width: 4rem;
   height: 4rem;
+}
+.coloring-icon{
+  color: var(--main-primary);
 }
 </style>
