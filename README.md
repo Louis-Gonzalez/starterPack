@@ -75,3 +75,10 @@ import MyIcon from '~/assets/icons/my-icon.svg';
 <template>
   <MyIcon />
 </template>
+```
+
+### for installing double Font inside vuetify plugin (mdi / fa) :
+
+Command to install : `npm install @fortawesome/fontawesome-svg-core @fortawesome/vue-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons -D`
+Command to install : `npm install add material-design-icons-iconfont -D`
+

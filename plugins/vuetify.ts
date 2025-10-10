@@ -1,11 +1,22 @@
-import '@mdi/font/css/materialdesignicons.css';
-import 'vuetify/styles';
-import { createVuetify } from 'vuetify';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
-import colors from 'vuetify/util/colors';
+import '@mdi/font/css/materialdesignicons.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+import 'vuetify/styles'
 
-export default defineNuxtPlugin((nuxt) => {
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import { fa } from 'vuetify/iconsets/fa4' // pour compatibilité Vuetify 3
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(fas, far)
+
+export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     ssr: true,
     components,
@@ -43,7 +54,16 @@ export default defineNuxtPlugin((nuxt) => {
         },
       },
     },
-  });
+    icons: {
+      defaultSet: 'mdi',
+      aliases,
+      sets: {
+        mdi,
+        fa,
+      },
+    },
+  })
 
-  nuxt.vueApp.use(vuetify);
-});
+  nuxtApp.vueApp.use(vuetify)
+  nuxtApp.vueApp.component('FontAwesomeIcon', FontAwesomeIcon)
+})
