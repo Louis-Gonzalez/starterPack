@@ -61,8 +61,8 @@ Command to run the script: `npm run check-i18n`
 
 ### for SVG :
 
-npx nuxi@latest module add nuxt-svgo
-npm install -D vite-svg-loader
+`npx nuxi@latest module add nuxt-svgo`
+`npm install -D vite-svg-loader`
 
 **SVGO** and **vite-svg-loader** work together to optimize and import SVG files as Vue components.  
 This allows you to use SVGs (monochrome or multicolor) directly in your templates without relying on `<img>` tags.
@@ -77,8 +77,150 @@ import MyIcon from '~/assets/icons/my-icon.svg';
 </template>
 ```
 
-### for installing double Font inside vuetify plugin (mdi / fa) :
+---
 
-Command to install : `npm install @fortawesome/fontawesome-svg-core @fortawesome/vue-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons -D`
-Command to install : `npm install add material-design-icons-iconfont -D`
+## 🎨 Font Integration (Material Design Icons + Font Awesome)
 
+To use **both Material Design Icons (MDI)** and **Font Awesome (FA)** within your Vuetify configuration, install the following dependencies:
+
+### 🧩 Installation Commands
+
+# Font Awesome (Free)
+`npm install @fortawesome/fontawesome-svg-core @fortawesome/vue-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons -D`
+
+
+# Material Design Icons
+`npm install material-design-icons-iconfont -D`
+
+---
+
+### ⚙️ Add Configuration in the Vuetify Plugin
+
+Add this to your `plugins/vuetify.ts` (or `plugins/vuetify.js`):
+
+```ts
+// plugins/vuetify.ts
+import '@mdi/font/css/materialdesignicons.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+import 'vuetify/styles'
+
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import { fa } from 'vuetify/iconsets/fa4' // pour compatibilité Vuetify 3
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(fas, far)
+
+export default defineNuxtPlugin((nuxtApp) => {
+  const vuetify = createVuetify({
+    ssr: true,
+    components,
+    directives,
+    theme: {
+      defaultTheme: 'light',
+      themes: {
+        light: {
+          colors: {
+            primary: '#E53935',
+            secondary: '#FFCDD2',
+            success: '#4CAF50',
+            info: '#2196F3',
+            warning: '#FB8C00',
+            error: '#FF5252',
+            color1: '#9C27B0',
+            color2: '#FFEB3B',
+            color3: '#121212',
+          },
+        },
+        dark: {
+          colors: {
+            primary: '#FFCDD2',
+            secondary: '#E53935',
+            success: '#81C784',
+            info: '#64B5F6',
+            warning: '#FFB74D',
+            error: '#E57373',
+            color1: '#CE93D8',
+            color2: '#FFF176',
+            color3: '#868686',
+            background: '#121212',
+            text: '#FFFFFF',
+          },
+        },
+      },
+    },
+    icons: {
+      defaultSet: 'mdi',
+      aliases,
+      sets: {
+        mdi,
+        fa,
+      },
+    },
+  })
+
+  nuxtApp.vueApp.use(vuetify)
+  nuxtApp.vueApp.component('FontAwesomeIcon', FontAwesomeIcon)
+})
+
+```
+
+💡 *This configuration enables both MDI and Font Awesome icons globally.*
+
+---
+
+### 🧱 Example of Usage
+
+You can now use both icon sets directly in your templates:
+
+```vue
+<template>
+  <section class="pa-4">
+    <h2>Icon examples</h2>
+    <p>
+      <!-- Material Design Icon -->
+      <v-icon icon="mdi-home" />
+
+      <!-- Font Awesome Solid -->
+      <v-icon icon="fa:fa-solid fa-user" />
+
+      <!-- Font Awesome Regular -->
+      <v-icon icon="fa:fa-regular fa-square-check" />
+
+      <!-- Font Awesome Brand -->
+      <v-icon icon="fa:fa-brands fa-github" />
+    </p>
+  </section>
+</template>
+```
+
+---
+
+### 🎨 Icon Styling and Colors
+
+Vuetify allows you to style icons directly using the `color` prop.
+
+```vue
+<v-icon icon="fa:fa-solid fa-user" color="primary" />
+<v-icon icon="mdi:mdi-home" color="deep-purple" />
+```
+
+You can also use dynamic colors with Vue’s reactivity system (e.g., using a `ref` variable).
+
+---
+
+✅ **Summary:**
+- `mdi-` icons are available by default.
+- `fa:` prefix allows access to Font Awesome icons.
+- The `color` prop works for both MDI and FA icons.
+
+---
+
+📄 *End of README*
