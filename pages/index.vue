@@ -109,6 +109,8 @@ const changeColor = () => {
         <v-icon icon="fa:fa-solid fa-arrow-rotate-right"/>
       </p>
     </div>
+
+    <v-icon icon="custom:dog" color="success"/>
   </section>
 </template>
 
