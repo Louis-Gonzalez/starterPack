@@ -110,7 +110,7 @@ const changeColor = () => {
       </p>
     </div>
 
-    <v-icon icon="custom:dog" color="success"/>
+    <v-icon icon="custom:fa-regular-dog" color="success"/>
   </section>
 </template>
 
