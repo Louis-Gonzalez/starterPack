@@ -15,7 +15,7 @@ import { h } from 'vue'
 
 library.add(fas, far)
 
-const iconFiles = import.meta.glob('@/assets/icons/custom/*.svg', { as: 'raw', eager: true })
+const iconFiles = import.meta.glob('@/assets/icons/custom/*.svg', { query: '?raw', import: 'default', eager: true })
 const customIcons: Record<string, string> = {}
 for (const path in iconFiles) {
   const name = path.split('/').pop()?.replace('.svg', '')
