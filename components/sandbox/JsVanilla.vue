@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// le test a été fait sans retour console
 // import { ref } from 'vue'
 // import { string } from 'postcss-selector-parser';
 // import { number } from '@intlify/core-base';
