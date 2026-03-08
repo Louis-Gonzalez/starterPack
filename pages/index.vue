@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Home from './../assets/icons/home.svg';
 import Microsoft from './../assets/icons/microsoft.svg';
+import JsVanilla from '~/components/sandbox/JsVanilla.vue';
+
 const colorSvg = [
   'deeppink',
   'darkblue',
@@ -51,6 +54,9 @@ const changeColor = () => {
         </div>
       </div>
     </div>
+  </section>
+  <section>
+    <JsVanilla />
   </section>
 </template>
 

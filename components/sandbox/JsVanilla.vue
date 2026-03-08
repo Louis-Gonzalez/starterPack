@@ -117,7 +117,7 @@ function add(a:number , b:number) {
 }
 
 // 4. Arrow function
-const addArrow = (a:number , b:number => a + b
+const addArrow = (a:number , b:number) => a + b
 
 // 5. Condition
 const isAdult = (age:number) => age >= 18
@@ -248,7 +248,7 @@ console.log(usersObject)
 </script>
 
 <template>
-
+  <div>test js Vanilla</div>
 </template>
 
 <style scoped>
